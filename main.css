@@ -1,0 +1,36 @@
+div.main_contain {
+    text-align: center;
+}
+
+button#diary_button {
+    margin: 0.5rem auto;
+    width: 10rem;
+}
+
+button#workout_title {
+    width: 100%;
+    pointer-events: none;
+}
+
+button#food_title {
+    width: 100%;
+    pointer-events: none;
+    margin-bottom: 15px;
+}
+
+
+@media (min-width: 576px){
+    .food_contain.col-sm-6 {
+        flex: 0 0 48%;
+        max-width: 50%;
+        margin-right: 15px;
+        background: #f8f8f8;
+    }
+
+    .workout_contain.col-sm-6 {
+        flex: 0 0 48%;
+        max-width: 50%;
+        background: #f8f8f8;
+        padding: 0;
+    }
+}
