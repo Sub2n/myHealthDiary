@@ -42,14 +42,11 @@ button#food_title {
    
 }
 
-
-
 .food_contain {
     width: 580px;
     background: #f8f8f8;
     padding: 0;
     padding-bottom: 2%;
-
     float: left;
 }
 
@@ -58,7 +55,25 @@ button#food_title {
     background: #f8f8f8;
     padding: 0;
     padding-bottom: 2%;
-
     float: right;
 }
 
+div#selectOption {
+    margin: 15px;
+}
+
+#selectOption button {
+    pointer-events: none; 
+    background: #31aefd;
+    border-color: #31aefd;
+    color: #fff;
+}
+
+div.mb-3 {
+    width: 100%;
+    height: 50px;
+}
+
+select.custom-select {
+    height: 100%;
+}
