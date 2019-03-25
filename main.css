@@ -1,36 +1,64 @@
 div.main_contain {
     text-align: center;
+    margin: 2%;
+    height: 800px;
 }
+
+h2.main_title {
+    margin: 2%;
+}
+
 
 button#diary_button {
     margin: 0.5rem auto;
     width: 10rem;
+    background: #31aefd;
+    border-color: #31aefd;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
 }
 
 button#workout_title {
     width: 100%;
     pointer-events: none;
+    background: #31aefd;
+    border-color: #31aefd;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+
 }
 
 button#food_title {
     width: 100%;
     pointer-events: none;
     margin-bottom: 15px;
+    background: #31aefd;
+    border-color: #31aefd;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+   
 }
 
 
-@media (min-width: 576px){
-    .food_contain.col-sm-6 {
-        flex: 0 0 48%;
-        max-width: 50%;
-        margin-right: 15px;
-        background: #f8f8f8;
-    }
 
-    .workout_contain.col-sm-6 {
-        flex: 0 0 48%;
-        max-width: 50%;
-        background: #f8f8f8;
-        padding: 0;
-    }
+.food_contain {
+    width: 580px;
+    background: #f8f8f8;
+    padding: 0;
+    padding-bottom: 2%;
+
+    float: left;
 }
+
+.workout_contain {
+    width: 580px;
+    background: #f8f8f8;
+    padding: 0;
+    padding-bottom: 2%;
+
+    float: right;
+}
+
