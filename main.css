@@ -42,6 +42,9 @@ button#food_title {
    
 }
 
+button.btn.btn-primary.save {
+    display: inline;
+}
 
 
 .food_contain {

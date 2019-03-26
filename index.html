@@ -1,69 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet"><!-- webfont -->
-    <link rel="stylesheet" href="style.css"><!-- 외부 스타일 불러오는 방법 -->
-    <link rel="stylesheet" href="main.css"><!-- 외부 스타일 불러오는 방법 -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean"
+      rel="stylesheet"
+    />
+    <!-- webfont -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- 외부 스타일 불러오는 방법 -->
+    <link rel="stylesheet" href="main.css" />
+    <!-- 외부 스타일 불러오는 방법 -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-</head>
-<body>
-    <div class="container"> <!-- Content 1170px -->
-        <div class="finedust">
-          <h2 class="main_title text-center"><span>오늘의 미세먼지</span></h2> <!-- 부트스트랩 기본 class중에 text-center 라는 클래스명은 자동으로 text-center 됨.-->
-        </div>
-        <div class="main_contain row">
-            <div class="food_contain col-sm-6">
-              <button id="food_title" class="btn btn-primary">식단 입력</button>
-                <form class="form-inline">
-                    <div class="form-group mb-2">
-                      <label for="staticEmail2" class="sr-only">칼로리</label>
-                      <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="칼로리">
-                    </div>
-                    <div class="form-group mx-sm-3 mb-2">
-                      <label for="inputPassword2" class="sr-only"></label>
-                      <input type="password" class="form-control" id="inputPassword2" placeholder="Calorie">
-                    </div>
-                    <button type="submit" class="btn btn-primary mb-2">Go</button>
-                  </form>
-                  <div class="form-group">
-                    <label for="exampleFormControlSelect1">showFoodList()1</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlSelect2">showList()2</label>
-                    <select multiple class="form-control" id="exampleFormControlSelect2">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                  </div>
-                  <button type="button" class="btn btn-primary">저장?</button>
-            </div> 
-            <!-- 부트스트랩은 12개로 나뉘어져서 2개로 자동 넓이 조정하려면 col-sm-6 , 3개의 레이아웃이 나오고 싶으면 col-sm-4 x3 해서 총 12개로 만든다. div class=row는 12개 나눌때 감싸져야 하는 div -->
-            <div class="workout_contain col-sm-6">
-                <button id="workout_title" class="btn btn-primary">운동 선택</button>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Content 1170px -->
+      <div class="finedust">
+        <h2 class="main_title text-center"><span>오늘의 미세먼지</span></h2>
+        <!-- 부트스트랩 기본 class중에 text-center 라는 클래스명은 자동으로 text-center 됨.-->
+      </div>
+      <div class="main_contain row">
+        <div class="food_contain col-sm-6">
+          <button id="food_title" class="btn btn-primary">식단 입력</button>
+          <form class="form-inline">
+            <div class="form-group mb-2">
+              <label for="staticEmail2" class="sr-only">칼로리</label>
+              <input
+                type="text"
+                readonly
+                class="form-control-plaintext"
+                id="staticEmail2"
+                value="칼로리"
+              />
             </div>
-            <button id="diary_button" type="button" class="btn btn-primary">내 일기</button>
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="inputPassword2" class="sr-only"></label>
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword2"
+                placeholder="Calorie"
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary"
+            >
+              칼로리 입력
+            </button>
+          </form>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">추천 식단 리스트</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option id="checkedOne">1 다이어트식 620kcal</option>
+              <option id="checkedTwo">2 고단백식 840kcal</option>
+              <option id="checkedThree">3 건강식 910kcal</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary" id="inputFood">
+            내 식단 입력 input
+          </button>
+          <button type="button" class="btn btn-primary" id="saveFood">저장하기 save</button>
+
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#exampleModalCenter"
+          >
+            상세 페이지
+          </button>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModalCenter"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">
+                    영양 정보
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">식단 이름</h5>
+                      <p class="card-text">칼로리 영양정보</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">칼로리</li>
+                      <li class="list-group-item">영양정보</li>
+                    </ul>
+                    <div class="card-body">
+                      <a href="#" class="card-link">card-link1</a>
+                      <a href="#" class="card-link">card-link2</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    닫기
+                  </button>
+                  <button type="button" class="btn btn-primary">저장</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- 부트스트랩은 12개로 나뉘어져서 2개로 자동 넓이 조정하려면 col-sm-6 , 3개의 레이아웃이 나오고 싶으면 col-sm-4 x3 해서 총 12개로 만든다. div class=row는 12개 나눌때 감싸져야 하는 div -->
+        <div class="workout_contain col-sm-6">
+          <button id="workout_title" class="btn btn-primary">운동 선택</button>
+        </div>
+        <button id="diary_button" type="button" class="btn btn-primary">
+          내 일기
+        </button>
+      </div>
     </div>
 
+    <script>
+      $(document).ready(function(){
+        $('#inputFood').click(function(e){
+        e.preventDefault();
+        console.log('#inputFood');
+      }); 
+      });
 
-</body>
+      $(document).ready(function(){
+        $('#saveFood').click(function(e){
+        e.preventDefault();
+        console.log('#saveFood');
+      }); 
+      });
+
+      $(document).ready(function(){
+        $('#checkedOne').click(function(e){
+        e.preventDefault();
+        console.log('#checkedOne');
+      }); 
+      });
+
+      $(document).ready(function(){
+        $('#checkedTwo').click(function(e){
+        e.preventDefault();
+        console.log('#checkedTwo');
+      }); 
+      });
+      
+      var storage_key = "records";
+           $(function() {
+               records = {};
+           });
+
+      var myFoodDiary = {
+        'myFood': [],
+        'state': true
+      };
+      myFoodDiary.myFood.push({ '식단 이름': '다이어트식', '칼로리': 620 });
+      myFoodDiary.myFood.push({ '식단 이름': '고단백식', '칼로리': 840 });
+      myFoodDiary.myFood.push({ '식단 이름': '건강식', '칼로리': 910 });
+
+      localStorage.setItem('myFood', JSON.stringify(myFoodDiary));
+
+      var restoredDiary = JSON.parse(localStorage.getItem('myFood'));
+
+      console.log(restoredDiary);
+      console.log(myFoodDiary);
+/* 
+      var storage_key = "records";
+           $(function() {
+               records = {};
+
+               // 처음 load할 때마다 반복
+               function load(){
+                   if (localStorage.getItem(storage_key) != null){
+                       records = localStorage.getItem(storage_key);
+                   } else return;
+               }
+
+               // 저장버
+               튼 click시
+               var diary = {};
+               diary['emotion'] = "good";  //사용자가 오늘 선택한 이모션 넣기
+               diary['content'] = $('#input').val(); //사용자가 오늘 작성한 이모션 넣기
+
+               var info = {};
+               info['diary_key']= dairy;   //사용자의 일기 정보를 info 딕셔너리의 diary_key의 value로 넣음
+
+               // var records = {};   //처음에만 만들고 이미 localStorage에 저장된 records가 있으면 그걸 getItem해서 가져올거임
+               records['19-03-26'] = info; //records에 오늘 날짜를 key로 해서 정보를 저장
+
+               localStorage.setItem(storage_key, JSON.stringify(records));
+               // 오늘 날짜를 추가한 records를 다시 localStorage에 저장 */
+    </script>
+  </body>
 </html>
