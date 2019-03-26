@@ -1,7 +1,6 @@
 div.main_contain {
     text-align: center;
-    margin: 2%;
-    height: 800px;
+    height: 600px;
 }
 
 h2.main_title {
@@ -10,7 +9,7 @@ h2.main_title {
 
 
 button#diary_button {
-    margin: 0.5rem auto;
+    margin: 1rem auto;
     width: 10rem;
     background: #31aefd;
     border-color: #31aefd;
@@ -43,19 +42,27 @@ button#food_title {
 }
 
 .food_contain {
-    width: 580px;
+    width: 555px;
     background: #f8f8f8;
-    padding: 0;
-    padding-bottom: 2%;
     float: left;
+    height: 100%;
 }
 
 .workout_contain {
-    width: 580px;
+    width: 555px;
     background: #f8f8f8;
-    padding: 0;
-    padding-bottom: 2%;
     float: right;
+    height: 100%;
+
+}
+
+.food_container {
+    padding-left: 0;
+}
+
+
+.workout_container {
+    padding-right: 0;
 }
 
 div#selectOption {

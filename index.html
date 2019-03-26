@@ -21,8 +21,9 @@
           <h2 class="main_title text-center"><span>오늘의 미세먼지</span></h2> <!-- 부트스트랩 기본 class중에 text-center 라는 클래스명은 자동으로 text-center 됨.-->
         </div>
         <div class="main_contain row">
-            <div class="food_contain col-sm-6">
-              <button id="food_title" class="btn btn-primary">식단 입력</button>
+            <div class="food_container col-sm-6">
+              <div class="food_contain">
+                <button id="food_title" class="btn btn-primary">식단 입력</button>
                 <form class="form-inline">
                     <div class="form-group mb-2">
                       <label for="staticEmail2" class="sr-only">칼로리</label>
@@ -55,40 +56,41 @@
                     </select>
                   </div>
                   <button type="button" class="btn btn-primary">저장?</button>
+              </div>
             </div> 
             <!-- 부트스트랩은 12개로 나뉘어져서 2개로 자동 넓이 조정하려면 col-sm-6 , 3개의 레이아웃이 나오고 싶으면 col-sm-4 x3 해서 총 12개로 만든다. div class=row는 12개 나눌때 감싸져야 하는 div -->
-            <div class="workout_contain col-sm-6">
-                <button id="workout_title" class="btn btn-primary">운동 선택</button>
-                <div id="selectOption">
-
-                  <div class="workPart input-group mb-3">
-                    <div class="input-group-prepend">
-                      <button class="btn btn-outline-secondary" type="button">PART</button>
+            <div class="workout_container col-sm-6">
+                <div class="workout_contain">
+                  <button id="workout_title" class="btn btn-primary">운동 선택</button>
+                  <div id="selectOption">
+  
+                    <div class="workPart input-group mb-3">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button">PART</button>
+                      </div>
+                      <select id="work_part" class="custom-select" aria-label="Example select with button addon">
+                        <option selected>운동 부위</option>
+                        <option value="1">상체</option>
+                        <option value="2">복근</option>
+                        <option value="3">하체</option>
+                        <option value="4">전신</option>
+                      </select>
+  
+                      <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button">TYPE</button>
+                      </div>
+                      <select id="work_type" class="custom-select" aria-label="Example select with button addon">
+                        <option selected>운동 종류</option>
+                        <option value="1">근력</option>
+                        <option value="2">유산소</option>
+                        <option value="3">스트레칭</option>
+                      </select>
                     </div>
-                    <select id="work_part" class="custom-select" aria-label="Example select with button addon">
-                      <option selected>운동 부위</option>
-                      <option value="1">상체</option>
-                      <option value="2">복근</option>
-                      <option value="3">하체</option>
-                      <option value="4">전신</option>
-                    </select>
-
-                    <div class="input-group-prepend">
-                      <button class="btn btn-outline-secondary" type="button">TYPE</button>
-                    </div>
-                    <select id="work_type" class="custom-select" aria-label="Example select with button addon">
-                      <option selected>운동 종류</option>
-                      <option value="1">근력</option>
-                      <option value="2">유산소</option>
-                      <option value="3">스트레칭</option>
-                    </select>
+  
+                    <div id="player"></div>
+                    <div id="player2"></div>
+  
                   </div>
-
-                  <div id="player"></div>
-                  <div id="player2"></div>
-           
-
-
                 </div>
             </div>
             <button id="diary_button" type="button" class="btn btn-primary">내 일기</button>
