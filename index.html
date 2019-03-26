@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta "name": "viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -27,7 +27,7 @@
                 <form class="form-inline">
                     <div class="form-group mb-2">
                       <label for="staticEmail2" class="sr-only">칼로리</label>
-                      <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="칼로리">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail2"] = "칼로리">
                     </div>
                     <div class="form-group mx-sm-3 mb-2">
                       <label for="inputPassword2" class="sr-only"></label>
@@ -70,10 +70,10 @@
                       </div>
                       <select id="work_part" class="custom-select" aria-label="Example select with button addon">
                         <option selected>운동 부위</option>
-                        <option value="1">상체</option>
-                        <option value="2">복근</option>
-                        <option value="3">하체</option>
-                        <option value="4">전신</option>
+                        <option] = "upper">상체</option>
+                        <option] = "abs">복근</option>
+                        <option] = "bottom">하체</option>
+                        <option] = "full">전신</option>
                       </select>
   
                       <div class="input-group-prepend">
@@ -81,9 +81,9 @@
                       </div>
                       <select id="work_type" class="custom-select" aria-label="Example select with button addon">
                         <option selected>운동 종류</option>
-                        <option value="1">근력</option>
-                        <option value="2">유산소</option>
-                        <option value="3">스트레칭</option>
+                        <option] = "weight">근력</option>
+                        <option] = "cardio">유산소</option>
+                        <option] = "strech">스트레칭</option>
                       </select>
                     </div>
   
@@ -99,6 +99,63 @@
 
 
     <script type="text/javascript">
+      workout_storageworkouts['workouts';
+
+      function loadWorkouts() {
+        workouts = {};
+        if(localStorage.getItem(workout_storageKey) == null){
+
+          workouts["upper_weight_1"] = {"name": "강하나 상체 2018", "YT_id": "spdpIgmqt8U"}
+          workouts["upper_weight_2"] = {"name": "땅끄부부 앉아서 하는 맨몸 상체운동", "YT_id": "C3TqpGgnIoI"}
+          workouts["upper_weight_3"] = {"name": "주원홈트 상체근력", "YT_id": "jKtVCY7B33s"}
+          workouts["upper_weight_4"] = {"name": "팔뚝살 완전 제거 운동", "YT_id": "cXOwm_v3EpQ"}
+          workouts["upper_weight_5"] = {"name": "상체 덤벨 운동", "YT_id": "XmouqUNwFdY"}
+          workouts["upper_cardio_1"] = {"name": "팔쭉빠", "YT_id": "4ARak8G0g-Q"}
+          workouts["upper_cardio_2"] = {"name": "팔뚝살, 어깨 라인 올인원!", "YT_id": "QvLB_cIzhXs"}
+          workouts["upper_strech_1"] = {"name": "강하나 상체 스트레칭 2019", "YT_id": "0kuJxzjz5S8"}
+          workouts["upper_strech_2"] = {"name": "승모근, 어깨 스트레칭", "YT_id": "l2zN7cM0vaE"}
+          workouts["upper_strech_3"] = {"name": "아이돌 일자어깨 스트레칭", "YT_id": "z3x_skEID3g"}
+          workouts["upper_strech_4"] = {"name": "어깨통증 목선 등에 탁월한 스트레칭", "YT_id": "gqF6hmK_aso"}
+
+          workouts["abs_weight_1"] = {"name": "누워서 하는 복근운동", "YT_id": "zcQ16cfJN9Q"}
+          workouts["abs_weight_2"] = {"name": "배가 찢어지는 초고속 복근 운동", "YT_id": "6G-WXg3bZnI"}
+          workouts["abs_weight_3"] = {"name": "맨몸 10분 복근운동", "YT_id": "EFadnuaH-Jg"}
+          workouts["abs_weight_4"] = {"name": "레베카 루이즈 복근", "YT_id": "UpCWMLVgHhE"}
+          workouts["abs_weight_5"] = {"name": "완벽한 복근과 평평한 배 완성하기", "YT_id": "W1r3NE5BUiA"}
+          workouts["abs_cardio_1"] = {"name": "쉽고 강력한 복부 유산소", "YT_id": "JYGg1ScfS88"}
+          workouts["abs_cardio_2"] = {"name": "뱃살 옆구리살 한방 운동", "YT_id": "jSrlMIlNHno"}
+          workouts["abs_cardio_3"] = {"name": "무조건! 뱃살 빠지는 운동 BEST5", "YT_id": "iOSYLKBk894"}
+          workouts["abs_cardio_4"] = {"name": "뱃쭉빠", "YT_id": "CAaJAMI7ux4"}
+          workouts["abs_strech_1"] = {"name": "잘록한 허리 만드는 허리 복부 스트레칭", "YT_id": "xRIfOwPYaUs"}
+          workouts["abs_strech_2"] = {"name": "복근운동 후 완벽한 스트레칭", "YT_id": "5dTfcUWluOY"}
+          workouts["abs_strech_3"] = {"name": "복부/허리 스트레칭", "YT_id": "ixWjfoved3Q"}
+          
+          workouts["bottom_weight_1"] = {"name": "강하나 하체 2018", "YT_id": "UQ8AC8eYDZI"};
+          workouts["bottom_weight_2"] = {"name": "Miley Cyrus Workout: Sexy Legs", "YT_id": "MG69sFM1UIw"};
+          workouts["bottom_weight_3"] = {"name": "Bootyful Butt Challenge", "YT_id": "rwVzamFR-tg"}
+          workouts["bottom_cardio_1"] = {"name": "허벅지 안쪽살 유산소 운동", "YT_id": "laglzuyfeKA"}
+          workouts["bottom_cardio_2"] = {"name": "허쭉빠", "YT_id": "zFielDkVc10"}
+          workouts["bottom_strech_1"] = {"name": "강하나 하체 스트레칭 2018", "YT_id": "LZWORB39zQk"}
+          workouts["bottom_strech_2"] = {"name": "다노 레전드 스트레칭", "YT_id": "VVn5IUM8sms"}
+          workouts["bottom_strech_3"] = {"name": "날하스", "YT_id": "--MMq6I07b4"}
+          workouts["bottom_strech_4"] = {"name": "강하나 하체 스트레칭 2008", "YT_id": "qjfLSqr6erU"}
+
+
+          workouts["full_weight_1"] = {"name": "최고의 전신 근력운동 BEST5", "YT_id": "Iaa8YNDRbhg"}
+          workouts["full_weight_2"] = {"name": "전신 올인원 운동", "YT_id": "cMkZ6A7wngk"}
+          workouts["full_weight_3"] = {"name": "무조건 살빠지는 전신 다이어트 운동", "YT_id": "3VouSaW_LPw"}
+          workouts["full_weight_4"] = {"name": "쉽고 간단한! 전신 다이어트 운동", "YT_id": "qa_ZbqHQCI0"}
+          workouts["full_cardio_1"] = {"name": "칼소폭", "YT_id": "VNQpP6C1fJg"}
+          workouts["full_cardio_2"] = {"name": "칼로리 버닝 전신 유산소", "YT_id": "rPEJyLNteNk"}
+          workouts["full_cardio_3"] = {"name": "칼소폭2", "YT_id": "MMswNnLdHso"}
+          workouts["full_cardio_4"] = {"name": "살쭉빠", "YT_id": "4m_XJVP7YQI"}
+          workouts["full_strech_1"] = {"name": "초간단! 전신 스트레칭 끝판왕 BEST5", "YT_id": "2LyDkE7sDec"}
+          workouts["full_strech_2"] = {"name": "데일리 전신스트레칭", "YT_id": "xNYJud41I_c"}
+          workouts["full_strech_3"] = {"name": "강하나 전신 스트레칭", "YT_id": "VK_3d1adkJc"}
+          workouts["full_strech_4"] = {"name": "인생 스트레칭 동작 모음", "YT_id": "n8t3EM-XeBo"}
+        }
+      }
+
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -151,7 +208,7 @@
       function stopVideo() {
         player.stopVideo();
       }
-    
+      
     
     </script>
 
