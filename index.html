@@ -90,11 +90,7 @@
                     <div id="workout_list">
 
                     </div>
-
-
-                    
-                    <div id="player2"></div>
-  
+ 
                   </div>
                 </div>
             </div>
@@ -107,7 +103,7 @@
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                    <h5 class="modal-title" id="popTitle">Modal title</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -116,8 +112,8 @@
                     <div id="player"></div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button id="saveHealthButton" type="button" class="btn btn-primary">운동 기록 저장</button>
                   </div>
                 </div>
               </div>
@@ -127,8 +123,24 @@
 
 
     <script type="text/javascript">
+      date_storageKey = 'date';
+      storage_key = '';
       workout_storageKey = 'workouts';  // 모든 운동 list를 localStorage에 저장하는 key
       workouts = {};                    // 모든 운동 list
+      date = [];
+
+      function load(){
+        storage_key = new Date().toISOString().slice(2, 10);
+        if(localStorage.getItem(date_storageKey) != null){
+          date = JSON.parse(localStorage.getItem(date_storageKey));
+        }
+        
+      }
+      
+      //여기부터해야함
+      function saveWorkout(){
+        var info = {};
+      }
 
       function setWorkouts() {
 
@@ -221,69 +233,76 @@
           }
         }
       }
-      var id;
+
+     
 
       $(document).ready(function(){
+        load();
         setWorkouts();
 
         $('#work_part').change(showHealthList);
         $('#work_type').change(showHealthList);
 
         $('div.workout').click(function(){
-          $('#popModal').modal('show');
-          
+          //showWorkoutDetail
+
           var key = this.id;
           var workout = workouts[key];
-          id = workout['YT_id'];
+          var id = workout['YT_id'];
 
+          $('#popModal').modal('show');
+          $('#popTitle').text(workout['name']);
           console.log(id);
           player = new YT.Player('player', {
-            height: '700',
-            width: '500',
+            height: '300',
+            width: '450',
             videoId: id,
             events: {
               'onReady': onPlayerReady,
               'onStateChange': onPlayerStateChange
             }
-          });
-          
+          }); 
+        });
+
+        $('#saveHealthButton').click(function(){
+          saveWorkout();
         });
 
       });
 
-          //유튜브  
-          // 2. This code loads the IFrame Player API code asynchronously.
-          var tag = document.createElement('script');
+      //유튜브  
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
 
-          tag.src = "https://www.youtube.com/iframe_api";
-          var firstScriptTag = document.getElementsByTagName('script')[0];
-          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-          // 3. This function creates an <iframe> (and YouTube player)
-          //    after the API code downloads.
-          var player;
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
 
-          function onYouTubeIframeAPIReady() {
-           
-          }
-          // 4. The API will call this function when the video player is ready.
-          function onPlayerReady(event) {
-                    event.target.playVideo();
-                  }
+      function onYouTubeIframeAPIReady() {
+        
+      }
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+                event.target.playVideo();
+              }
 
-          // 5. The API calls this function when the player's state changes.
-          //    The function indicates that when playing a video (state=1),
-          //    the player should play for six seconds and then stop.
-          var done = false;
-          function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING && !done) {
-              setTimeout(stopVideo, 6000);
-              done = true;
-            }
-          }
-          function stopVideo() {
-            player.stopVideo();
-          }
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
 
       /*
       $('#popModal').on('show.bs.modal', function (event) {
