@@ -48,111 +48,122 @@
             </form>
         </div>
     </div><!-- //diary input wrap-->
-    <div id="diary_history_wrap"><!-- diary_history_wrap -->
-        <div class="container">         
-            <div class="row">
-                <div class="diary_history"></div>
-                <div class="diary_history"></div>
-                <div class="diary_history"></div>
-                <div class="diary_history"></div>
-                <div class="diary_history"></div>
-            </div>
+
+    <div id="diary_history_wrap">  <!-- diary_history_wrap -->      
+        <div class="container">
+          <div class="row"></div>
         </div>
-    </div><!-- //diary_history_wrap -->
+        <div id="section"></div>
+    </div>
 
 
     <script type="text/javascript">
-        var storage_key = "records";
-        records = {};
-
-        // 처음 load할 때마다 반복
-        function load(){
-            if (localStorage.getItem(storage_key) != null){ // localStorage에 storage_key 값이 있다면
-                records = JSON.parse(localStorage.getItem(storage_key)); // records는 localStorage에 있는 storage_key값을 불러온다. (getItem이 불러오는것)
-                console.log('있는 records 가져옴');
-
-            } else {
-                 console.log('레코드없음');
-                 return;
-            }                
+        date = [];
+        // 처음 시작할 때 리스트를 로드하는 함수.
+        function load() {
+        //localStorage의 date를 불러옴
+        if(localStorage.getItem('date') != null){
+        date = JSON.parse(localStorage.getItem('date'));
         }
 
-        $(function() {
-            load();
+        // 이미 있던 리스트들을 한번 없애준다.
+        $(".row").text("");
 
-            // 저장버튼 click시
-            var diary = {};
-            diary['emotion'] = "good";  //사용자가 오늘 선택한 이모션 넣기
-
-            diary['content'] = $('#input').val();
-            /*
-            diary['content'] = $('#input').val(); //사용자가 오늘 작성한 내용 넣기*/
-
-            var info = {};
-            info['diary_key'] = diary;   //사용자의 일기 정보를 info 딕셔너리의 diary_key의 value로 넣음
-
-            // var records = {};   //처음에만 만들고 이미 localStorage에 저장된 records가 있으면 그걸 getItem해서 가져올거임
-            records['19-03-26'] = info; //records에 오늘 날짜를 key로 해서 정보를 저장
-
-            localStorage.setItem(storage_key, JSON.stringify(records));
-            // 오늘 날짜를 추가한 records를 다시 localStorage에 저장
-        });
-
-
-        $(".form").submit(function(e) {
-            e.preventDefault();
-        });
-
-        $(".check-btn").change(function(e) { // check-btn이 중복 선택되기 때문에 중복선택되지 않게 change변경
-            $(".check-btn")[0].checked = false; // check-btn 첫번째는 false
-            $(".check-btn")[1].checked = false; // check-btn 두번째는 false
-            $(".check-btn")[2].checked = false; // check-btn 세번째는 false
-            $(this)[0].checked = true; // 현재 클릭된 check-btn은 true
-        });// 체크버튼되는 걸 처음에 모두 false 로 바꿨다가 this 마지막 현재 체크된 버튼만 true 로 변경해서 보여준다.
-        
-       
-        $('#showDiary').hide();
-        $("#SaveButton").click(function(e){
-            var checkbtn;
-            var diary = {};
-
-            e.preventDefault();
-
-            if($('.check-btn:checked')[0].id=="good"){ // 만약 사용자가 체크한 버튼의 id가 good일 경우 
-                checkbtn = '<i class="far ' + "fa-grin" + '"></i>'; // checkbtn은 class가 fa-grin 인 아이콘이 된다. 
-                diary['emotion'] = "good"; // good 의 emotion을 diary에 담는다
-            } else if ($('.check-btn:checked')[0].id=="normal") { // 사용자가 체크한 버튼의 id가 normal 일 경우 
-                checkbtn = '<i class="far ' + "fa-flushed" + '"></i>'; // checkbtn은 class가 fa-flushed 인 아이콘이 된다. 
-                diary['emotion'] = "normal";  // normal 의 emotion을 diary에 담는다 
-            } else if ($('.check-btn:checked')[0].id=="bad") { // 사용자가 체크한 버튼의 id가 bad일 경우 
-                checkbtn = '<i class="far ' + "fa-angry" + '"></i>'; // checkbtn은 class가 fa-angry 인 아이콘이 된다. 
-                diary['emotion'] = "bad";  // bad 의 emotion을 diary에 담는다 
+        // 그 자료의 날짜를 한바퀴 돈다.
+        for (var i in date) {
+            var icon;
+            var key = date[i];
+            var date_info = localStorage.getItem(key);
+            // 만약 해당 날짜의 감정이 good 이면 icon 은 fa-grin 이런식으로...
+            if (date_info["diary"]["emotion"] == "good") {
+            icon = "fa-grin";
+            } else if (date_info["diary"]["emotion"] == "normal") {
+            icon = "fa-flushed";
+            } else if (date_info["diary"]["emotion"] == "bad") {
+            icon = "fa-angly";
             }
-            $("#showDiary").append(checkbtn); // checkbtn을 #showDiary라는 아이디를 가진곳에 append(추가)
-            $(".diary_history").append(checkbtn);// checkbtn을 .diary_history라는 클래스를 가진곳에 append(추가)
 
-            var writeDiary =  $("#writeDiary").val();
-            diary['content'] = writeDiary;//사용자가 오늘 작성한 내용 넣기*/
+            // row라는 클래스를 가진 div에 추가한다.
+            $(".row").append(
+            "<div class='date' data-date='" +
+                date +
+                "'>" +
+                date.replace("-", "년").replace("-", "월") +
+                "일" +
+                "</div>"
+            );
+        }
 
-            var info = {}; // info는 전체를 담는 key값 
-            info['diary_key'] = diary;   
-            records['19-03-24'] = info; // records key에 info 내용을 담는다.
+        // date라는 클래스를 가진 요소를 클릭하면(하면상에서는 날짜를 클릭하면)
+        $(".date").click(function(e) {
+            // 클릭된 해당 날짜 데이터 값을 읽어와 date 변수에 저장한나.
+            var date = $(this).attr("data-date");
+            // 해당 날짜의 콘텐츠와 감정을 요소에 담아
+            var data =
+            "<div>" +
+            JSON.parse(localStorage.getItem(date))["diary"][
+                "content"
+            ] +
+            "</div>";
+            // section이라는 id를 가진 박스를 한번 비워주고 데이터를 가진 요소를 추가한다.
+            $("#section").text("");
+            $("#section").append(data);
+        });
+        }
 
-            localStorage.setItem(storage_key, JSON.stringify(records));
+        $(document).ready(function(){
+        // 시작시 로컬스토리지 로드하는 함수 호출
+        load();
 
-
-            $("#showDiary").append(writeDiary); 
-            $(".diary_history").append(writeDiary); 
-            $('#writeDiary').hide();
-            $('#showDiary').show();
-
-            alert("Diary 에 저장되었습니다.")
+        // 폼태그의 기본 submit 이벤트를 막는다.
+        $("form").submit(function(e) {
+        e.preventDefault();
+        });
+        // 중복체크를 막는 함수
+        $(".check-btn").change(function(e) {
+        $(".check-btn")[0].checked = false;
+        $(".check-btn")[1].checked = false;
+        $(".check-btn")[2].checked = false;
+        $(this)[0].checked = true;
         });
 
+        // 저장하면 로컬스토리지에 저장하고, 다시 로드한다.
+        $("#SaveButton").click(function(e) {
+        
+            // 작성한 글 내용을 text변수에 저장한다.
+            var text = $("#writeDiary").val();
 
+            // 체크된 input의 id가 무었인지 알아내서 emotion이라는 변수에 저장한다.
+            var emotion = $(".check-btn:checked")[0].id;
+
+            // 오늘 날짜를 저장한다.
+            var today = new Date().toISOString().slice(2, 10);
+
+            // TODO: 아래 텍스트 없애고 한줄 데이터 추가
+
+            // 오늘 날짜: {
+            //      diary: { content: text, emotion: emotion }
+            //    }
+            // 의 형태로 사전형(객체에 정의하고)
+            
+            var date_info = {
+                    'food': {},
+                    'workout': {},
+                    'diary': {'emotion':emotion, 'content':text}
+            };
+        
+            // 로컬스토리지에 저장한다.
+            localStorage.setItem(today, JSON.stringify(date_info));
+
+            date.push(today);
+            localStorage.setItem('date', date);
+
+            });
+        });
+        
     </script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
