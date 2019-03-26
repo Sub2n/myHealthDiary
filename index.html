@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta "name": "viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -70,10 +70,10 @@
                       </div>
                       <select id="work_part" class="custom-select" aria-label="Example select with button addon">
                         <option selected>운동 부위</option>
-                        <option] = "upper">상체</option>
-                        <option] = "abs">복근</option>
-                        <option] = "bottom">하체</option>
-                        <option] = "full">전신</option>
+                        <option value="upper">상체</option>
+                        <option value="abs">복근</option>
+                        <option value="bottom">하체</option>
+                        <option value="full">전신</option>
                       </select>
   
                       <div class="input-group-prepend">
@@ -81,9 +81,9 @@
                       </div>
                       <select id="work_type" class="custom-select" aria-label="Example select with button addon">
                         <option selected>운동 종류</option>
-                        <option] = "weight">근력</option>
-                        <option] = "cardio">유산소</option>
-                        <option] = "strech">스트레칭</option>
+                        <option value="weight">근력</option>
+                        <option value="cardio">유산소</option>
+                        <option value="strech">스트레칭</option>
                       </select>
                     </div>
   
@@ -99,7 +99,7 @@
 
 
     <script type="text/javascript">
-      workout_storageworkouts['workouts';
+      workout_storageKey = 'workouts';
 
       function loadWorkouts() {
         workouts = {};
