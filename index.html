@@ -69,7 +69,7 @@
                         <button class="btn btn-outline-secondary" type="button">PART</button>
                       </div>
                       <select id="work_part" class="custom-select" aria-label="Example select with button addon">
-                        <option selected>운동 부위</option>
+                        <option value="_">운동 부위</option>
                         <option value="upper">상체</option>
                         <option value="abs">복근</option>
                         <option value="bottom">하체</option>
@@ -80,7 +80,7 @@
                         <button class="btn btn-outline-secondary" type="button">TYPE</button>
                       </div>
                       <select id="work_type" class="custom-select" aria-label="Example select with button addon">
-                        <option selected>운동 종류</option>
+                        <option value="_">운동 종류</option>
                         <option value="weight">근력</option>
                         <option value="cardio">유산소</option>
                         <option value="strech">스트레칭</option>
@@ -88,15 +88,10 @@
                     </div>
                     
                     <div id="workout_list">
-                      <div class="workout">
-                        <img src="img/abs_cardio_1.jpg">
-                        <h6>운동^^</h6>
-                      </div>
-                      <div class="workout">
-                        <img src="img/abs_cardio_2.jpg">
-                        <h6>운동^.^</h6>
-                      </div>
+
                     </div>
+
+
                     <div id="player"></div>
                     <div id="player2"></div>
   
@@ -117,7 +112,7 @@
         if(localStorage.getItem(workout_storageKey) == null){
 
           workouts["upper_weight_1"] = {"name": "강하나 상체 2018", "YT_id": "spdpIgmqt8U"}
-          workouts["upper_weight_2"] = {"name": "땅끄부부 앉아서 하는 맨몸 상체운동", "YT_id": "C3TqpGgnIoI"}
+          workouts["upper_weight_2"] = {"name": "앉아서 하는 맨몸 상체운동", "YT_id": "C3TqpGgnIoI"}
           workouts["upper_weight_3"] = {"name": "주원홈트 상체근력", "YT_id": "jKtVCY7B33s"}
           workouts["upper_weight_4"] = {"name": "팔뚝살 완전 제거 운동", "YT_id": "cXOwm_v3EpQ"}
           workouts["upper_weight_5"] = {"name": "상체 덤벨 운동", "YT_id": "XmouqUNwFdY"}
@@ -171,7 +166,7 @@
           workouts = JSON.parse(localStorage.getItem(workout_storageKey));
           console.log('workouts is already exist');
         }
-          drawList();
+        drawList();
       }
       
       function drawList(){
@@ -181,7 +176,7 @@
           var workout = workouts[key];
           console.log(workout);
           $('#workout_list').append(
-            '<div class="workout"><img src="img/'+key+'.jpg"><h6>'+workout[name]+'</h6></div>'
+            '<div id="'+key+'" class="workout"><img src="img/'+key+'.jpg"><p>'+workout['name']+'</p></div>'
           );
         }
       }
@@ -189,10 +184,19 @@
       function showHealthList(){
         var select1 = $('#work_part').val();
         var select2 = $('#work_type').val();
-
+        
         for(var key in workouts){
-          if(key.indexOf(select1) != -1 || key.indexOf(select2) != -1){
-
+          console.log(select1);
+          console.log(select2);
+          console.log(key);
+          if(select1 == '_' && select2 == '_'){
+            $('#'+key).hide(); continue;
+          }
+          if(key.indexOf(select1) > -1 && key.indexOf(select2) > -1){
+            $('#'+key).attr('style', 'display: inline-block;');
+            $('#'+key).show();
+          }else{
+            $('#'+key).hide();
           }
         }
       }
@@ -202,7 +206,8 @@
       $(document).ready(function(){
         setWorkouts();
 
-
+        $('#work_part').change(showHealthList);
+        $('#work_type').change(showHealthList);
 
 
       });
