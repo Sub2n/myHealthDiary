@@ -1,240 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean"
-      rel="stylesheet"
-    />
-    <!-- webfont -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- 외부 스타일 불러오는 방법 -->
-    <link rel="stylesheet" href="main.css" />
-    <!-- 외부 스타일 불러오는 방법 -->
+<html>
 
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    <div class="container">
-      <!-- Content 1170px -->
-      <div class="finedust">
-        <h2 class="main_title text-center"><span>오늘의 미세먼지</span></h2>
-        <!-- 부트스트랩 기본 class중에 text-center 라는 클래스명은 자동으로 text-center 됨.-->
-      </div>
-      <div class="main_contain row">
-        <div class="food_contain col-sm-6">
-          <button id="food_title" class="btn btn-primary">식단 입력</button>
-          <form class="form-inline">
-            <div class="form-group mb-2">
-              <label for="staticEmail2" class="sr-only">칼로리</label>
-              <input
-                type="text"
-                readonly
-                class="form-control-plaintext"
-                id="staticEmail2"
-                value="칼로리"
-              />
-            </div>
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="inputPassword2" class="sr-only"></label>
-              <input
-                type="password"
-                class="form-control"
-                id="inputPassword2"
-                placeholder="Calorie"
-              />
-            </div>
-            <button
-              type="button"
-              class="btn btn-primary"
-            >
-              칼로리 입력
-            </button>
-          </form>
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">추천 식단 리스트</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option id="checkedOne">1 다이어트식 620kcal</option>
-              <option id="checkedTwo">2 고단백식 840kcal</option>
-              <option id="checkedThree">3 건강식 910kcal</option>
-            </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+  <!-- webfont -->
+  <link rel="stylesheet" href="style.css"><!-- 외부 스타일 불러오는 방법 -->
+  <link rel="stylesheet" href="main.css"><!-- 외부 스타일 불러오는 방법 -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <!-- Content 1170px -->
+    <div class="finedust">
+      <h2 class="main_title text-center"><span>오늘의 미세먼지</span></h2>
+      <!-- 부트스트랩 기본 class중에 text-center 라는 클래스명은 자동으로 text-center 됨.-->
+    </div>
+    <div class="main_contain row">
+      <div class="food_contain col-sm-6">
+        <button id="food_title" class="btn btn-primary">식단 입력</button>
+        <form class="form-inline">
+          <div class="form-group mb-2">
+            <label for="staticEmail2" class="sr-only">칼로리</label>
+            <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="칼로리" />
           </div>
-          <button type="button" class="btn btn-primary" id="inputFood">
-            내 식단 입력 input
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2" class="sr-only"></label>
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Calorie" />
+          </div>
+          <button type="button" class="btn btn-primary" id="inputCalorie">
+            칼로리 입력
           </button>
-          <button type="button" class="btn btn-primary" id="saveFood">저장하기 save</button>
+        </form>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">추천 식단 리스트</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option id="checkedOne">01 다이어트식 620kcal</option>
+            <option id="checkedTwo">02 고단백식 840kcal</option>
+            <option id="checkedThree">03 건강식 910kcal</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary" id="inputFood">
+          내 식단 입력 input
+        </button>
+        <button type="button" class="btn btn-primary" id="saveFood">저장하기 save</button>
 
-          <!-- Button trigger modal -->
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-toggle="modal"
-            data-target="#exampleModalCenter"
-          >
-            상세 페이지
-          </button>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+          상세 페이지
+        </button>
 
-          <!-- Modal -->
-          <div
-            class="modal fade"
-            id="exampleModalCenter"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterTitle">
-                    영양 정보
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">식단 이름</h5>
-                      <p class="card-text">칼로리 영양정보</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">칼로리</li>
-                      <li class="list-group-item">영양정보</li>
-                    </ul>
-                    <div class="card-body">
-                      <a href="#" class="card-link">card-link1</a>
-                      <a href="#" class="card-link">card-link2</a>
-                    </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">
+                  영양 정보
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">식단 이름</h5>
+                    <p class="card-text">칼로리 영양정보</p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">칼로리</li>
+                    <li class="list-group-item">영양정보</li>
+                  </ul>
+                  <div class="card-body">
+                    <a href="#" class="card-link">card-link1</a>
+                    <a href="#" class="card-link">card-link2</a>
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    닫기
-                  </button>
-                  <button type="button" class="btn btn-primary">저장</button>
-                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                  닫기
+                </button>
+                <button type="button" class="btn btn-primary">저장</button>
               </div>
             </div>
           </div>
         </div>
-        <!-- 부트스트랩은 12개로 나뉘어져서 2개로 자동 넓이 조정하려면 col-sm-6 , 3개의 레이아웃이 나오고 싶으면 col-sm-4 x3 해서 총 12개로 만든다. div class=row는 12개 나눌때 감싸져야 하는 div -->
-        <div class="workout_contain col-sm-6">
+      </div>
+      <!-- 부트스트랩은 12개로 나뉘어져서 2개로 자동 넓이 조정하려면 col-sm-6 , 3개의 레이아웃이 나오고 싶으면 col-sm-4 x3 해서 총 12개로 만든다. div class=row는 12개 나눌때 감싸져야 하는 div -->
+      <div class="workout_container col-sm-6">
+        <div class="workout_contain">
           <button id="workout_title" class="btn btn-primary">운동 선택</button>
+          <div id="selectOption">
+
+            <div class="workPart input-group mb-3">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">PART</button>
+              </div>
+              <select id="work_part" class="custom-select" aria-label="Example select with button addon">
+                <option value="_">운동 부위</option>
+                <option value="upper">상체</option>
+                <option value="abs">복근</option>
+                <option value="bottom">하체</option>
+                <option value="full">전신</option>
+              </select>
+
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">TYPE</button>
+              </div>
+              <select id="work_type" class="custom-select" aria-label="Example select with button addon">
+                <option value="_">운동 종류</option>
+                <option value="weight">근력</option>
+                <option value="cardio">유산소</option>
+                <option value="strech">스트레칭</option>
+              </select>
+            </div>
+
+            <div id="workout_list">
+
+            </div>
+
+
+            <div id="player"></div>
+            <div id="player2"></div>
+
+          </div>
         </div>
-        <button id="diary_button" type="button" class="btn btn-primary">
-          내 일기
-        </button>
       </div>
     </div>
+  </div>
+  <!-- 부트스트랩은 12개로 나뉘어져서 2개로 자동 넓이 조정하려면 col-sm-6 , 3개의 레이아웃이 나오고 싶으면 col-sm-4 x3 해서 총 12개로 만든다. div class=row는 12개 나눌때 감싸져야 하는 div -->
+  <button id="diary_button" type="button" class="btn btn-primary">
+    내 일기
+  </button>
+  </div>
+  </div>
 
-    <script>
-      $(document).ready(function(){
-        $('#inputFood').click(function(e){
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#inputFood').click(function (e) {
         e.preventDefault();
         console.log('#inputFood');
-      }); 
       });
-
-      $(document).ready(function(){
-        $('#saveFood').click(function(e){
+      $('#saveFood').click(function (e) {
         e.preventDefault();
         console.log('#saveFood');
-      }); 
       });
-
-      $(document).ready(function(){
-        $('#checkedOne').click(function(e){
+      $('#checkedOne').click(function (e) {
         e.preventDefault();
         console.log('#checkedOne');
-      }); 
       });
-
-      $(document).ready(function(){
-        $('#checkedTwo').click(function(e){
+      $('#checkedTwo').click(function (e) {
         e.preventDefault();
         console.log('#checkedTwo');
-      }); 
       });
-      
-      var storage_key = "records";
-           $(function() {
-               records = {};
-           });
+      $('#inputCalorie').click(function (e) {
+        e.preventDefault();
+        console.log('#inputCalorie');
+      });
+    });
 
-      var myFoodDiary = {
-        'myFood': [],
-        'state': true
-      };
-      myFoodDiary.myFood.push({ '식단 이름': '다이어트식', '칼로리': 620 });
-      myFoodDiary.myFood.push({ '식단 이름': '고단백식', '칼로리': 840 });
-      myFoodDiary.myFood.push({ '식단 이름': '건강식', '칼로리': 910 });
+    var storage_key = "records";
+    $(function () {
+      records = {};
+    });
 
-      localStorage.setItem('myFood', JSON.stringify(myFoodDiary));
+    var myFoodDiary = {
+      'myFood': [],
+      'state': true
+    };
+    myFoodDiary.myFood.push({ '식단 이름': '다이어트식', '칼로리': 620 });
+    myFoodDiary.myFood.push({ '식단 이름': '고단백식', '칼로리': 840 });
+    myFoodDiary.myFood.push({ '식단 이름': '건강식', '칼로리': 910 });
 
-      var restoredDiary = JSON.parse(localStorage.getItem('myFood'));
+    localStorage.setItem('myFood', JSON.stringify(myFoodDiary));
 
-      console.log(restoredDiary);
-      console.log(myFoodDiary);
-/* 
-      var storage_key = "records";
-           $(function() {
-               records = {};
+    var restoredDiary = JSON.parse(localStorage.getItem('myFood'));
 
-               // 처음 load할 때마다 반복
-               function load(){
-                   if (localStorage.getItem(storage_key) != null){
-                       records = localStorage.getItem(storage_key);
-                   } else return;
-               }
+    console.log(restoredDiary);
+    console.log(myFoodDiary);
+    /* 
+          var storage_key = "records";
+               $(function() {
+                   records = {};
+    
+                   // 처음
+                    load할 때마다 반복
+                   function load(){
+                       if (localStorage.getItem(storage_key) != null){
+                           records = localStorage.getItem(storage_key);
+                       } else return;
+                   }
+    
+                   // 저장버
+                   튼 click시
+                   var diary = {};
+                   diary['emotion'] = "good";  //사용자가 오늘 선택한 이모션 넣기
+                   diary['content'] = $('#input').val(); //사용자가 오늘 작성한 이모션 넣기
+    
+                   var info = {};
+                   info['diary_key']= dairy;   //사용자의 일기 정보를 info 딕셔너리의 diary_key의 value로 넣음
+    
+                   // var records = {};   //처음에만 만들고 이미 localStorage에 저장된 records가 있으면 그걸 getItem해서 가져올거임
+                   records['19-03-26'] = info; //records에 오늘 날짜를 key로 해서 정보를 저장
+    
+                   localStorage.setItem(storage_key, JSON.stringify(records));
+                   // 오늘 날짜를 추가한 records를 다시 localStorage에 저장 */
 
-               // 저장버
-               튼 click시
-               var diary = {};
-               diary['emotion'] = "good";  //사용자가 오늘 선택한 이모션 넣기
-               diary['content'] = $('#input').val(); //사용자가 오늘 작성한 이모션 넣기
+    workout_storageKey = 'workouts';  // 모든 운동 list를 localStorage에 저장하는 key
+    workouts = {};                    // 모든 운동 list
 
-               var info = {};
-               info['diary_key']= dairy;   //사용자의 일기 정보를 info 딕셔너리의 diary_key의 value로 넣음
+    function setWorkouts() {
 
-               // var records = {};   //처음에만 만들고 이미 localStorage에 저장된 records가 있으면 그걸 getItem해서 가져올거임
-               records['19-03-26'] = info; //records에 오늘 날짜를 key로 해서 정보를 저장
+      if (localStorage.getItem(workout_storageKey) == null) {
 
-               localStorage.setItem(storage_key, JSON.stringify(records));
-               // 오늘 날짜를 추가한 records를 다시 localStorage에 저장 */
-    </script>
-  </body>
+        workouts["upper_weight_1"] = { "name": "강하나 상체 2018", "YT_id": "spdpIgmqt8U" }
+        workouts["upper_weight_2"] = { "name": "앉아서 하는 맨몸 상체운동", "YT_id": "C3TqpGgnIoI" }
+        workouts["upper_weight_3"] = { "name": "주원홈트 상체근력", "YT_id": "jKtVCY7B33s" }
+        workouts["upper_weight_4"] = { "name": "팔뚝살 완전 제거 운동", "YT_id": "cXOwm_v3EpQ" }
+        workouts["upper_weight_5"] = { "name": "상체 덤벨 운동", "YT_id": "XmouqUNwFdY" }
+        workouts["upper_cardio_1"] = { "name": "팔쭉빠", "YT_id": "4ARak8G0g-Q" }
+        workouts["upper_cardio_2"] = { "name": "팔뚝살, 어깨 라인 올인원!", "YT_id": "QvLB_cIzhXs" }
+        workouts["upper_strech_1"] = { "name": "강하나 상체 스트레칭 2019", "YT_id": "0kuJxzjz5S8" }
+        workouts["upper_strech_2"] = { "name": "승모근, 어깨 스트레칭", "YT_id": "l2zN7cM0vaE" }
+        workouts["upper_strech_3"] = { "name": "아이돌 일자어깨 스트레칭", "YT_id": "z3x_skEID3g" }
+        workouts["upper_strech_4"] = { "name": "어깨통증 목선 등에 탁월한 스트레칭", "YT_id": "gqF6hmK_aso" }
+
+        workouts["abs_weight_1"] = { "name": "누워서 하는 복근운동", "YT_id": "zcQ16cfJN9Q" }
+        workouts["abs_weight_2"] = { "name": "배가 찢어지는 초고속 복근 운동", "YT_id": "6G-WXg3bZnI" }
+        workouts["abs_weight_3"] = { "name": "맨몸 10분 복근운동", "YT_id": "EFadnuaH-Jg" }
+        workouts["abs_weight_4"] = { "name": "레베카 루이즈 복근", "YT_id": "UpCWMLVgHhE" }
+        workouts["abs_weight_5"] = { "name": "완벽한 복근과 평평한 배 완성하기", "YT_id": "W1r3NE5BUiA" }
+        workouts["abs_cardio_1"] = { "name": "쉽고 강력한 복부 유산소", "YT_id": "JYGg1ScfS88" }
+        workouts["abs_cardio_2"] = { "name": "뱃살 옆구리살 한방 운동", "YT_id": "jSrlMIlNHno" }
+        workouts["abs_cardio_3"] = { "name": "무조건! 뱃살 빠지는 운동 BEST5", "YT_id": "iOSYLKBk894" }
+        workouts["abs_cardio_4"] = { "name": "뱃쭉빠", "YT_id": "CAaJAMI7ux4" }
+        workouts["abs_strech_1"] = { "name": "잘록한 허리 만드는 허리 복부 스트레칭", "YT_id": "xRIfOwPYaUs" }
+        workouts["abs_strech_2"] = { "name": "복근운동 후 완벽한 스트레칭", "YT_id": "5dTfcUWluOY" }
+        workouts["abs_strech_3"] = { "name": "복부/허리 스트레칭", "YT_id": "ixWjfoved3Q" }
+
+        workouts["bottom_weight_1"] = { "name": "강하나 하체 2018", "YT_id": "UQ8AC8eYDZI" };
+        workouts["bottom_weight_2"] = { "name": "Miley Cyrus Workout: Sexy Legs", "YT_id": "MG69sFM1UIw" };
+        workouts["bottom_weight_3"] = { "name": "Bootyful Butt Challenge", "YT_id": "rwVzamFR-tg" }
+        workouts["bottom_cardio_1"] = { "name": "허벅지 안쪽살 유산소 운동", "YT_id": "laglzuyfeKA" }
+        workouts["bottom_cardio_2"] = { "name": "허쭉빠", "YT_id": "zFielDkVc10" }
+        workouts["bottom_strech_1"] = { "name": "강하나 하체 스트레칭 2018", "YT_id": "LZWORB39zQk" }
+        workouts["bottom_strech_2"] = { "name": "다노 레전드 스트레칭", "YT_id": "VVn5IUM8sms" }
+        workouts["bottom_strech_3"] = { "name": "날하스", "YT_id": "--MMq6I07b4" }
+        workouts["bottom_strech_4"] = { "name": "강하나 하체 스트레칭 2008", "YT_id": "qjfLSqr6erU" }
+
+
+        workouts["full_weight_1"] = { "name": "최고의 전신 근력운동 BEST5", "YT_id": "Iaa8YNDRbhg" }
+        workouts["full_weight_2"] = { "name": "전신 올인원 운동", "YT_id": "cMkZ6A7wngk" }
+        workouts["full_weight_3"] = { "name": "무조건 살빠지는 전신 다이어트 운동", "YT_id": "3VouSaW_LPw" }
+        workouts["full_weight_4"] = { "name": "쉽고 간단한! 전신 다이어트 운동", "YT_id": "qa_ZbqHQCI0" }
+        workouts["full_cardio_1"] = { "name": "칼소폭", "YT_id": "VNQpP6C1fJg" }
+        workouts["full_cardio_2"] = { "name": "칼로리 버닝 전신 유산소", "YT_id": "rPEJyLNteNk" }
+        workouts["full_cardio_3"] = { "name": "칼소폭2", "YT_id": "MMswNnLdHso" }
+        workouts["full_cardio_4"] = { "name": "살쭉빠", "YT_id": "4m_XJVP7YQI" }
+        workouts["full_strech_1"] = { "name": "초간단! 전신 스트레칭 끝판왕 BEST5", "YT_id": "2LyDkE7sDec" }
+        workouts["full_strech_2"] = { "name": "데일리 전신스트레칭", "YT_id": "xNYJud41I_c" }
+        workouts["full_strech_3"] = { "name": "강하나 전신 스트레칭", "YT_id": "VK_3d1adkJc" }
+        workouts["full_strech_4"] = { "name": "인생 스트레칭 동작 모음", "YT_id": "n8t3EM-XeBo" }
+
+        localStorage.setItem(workout_storageKey, JSON.stringify(workouts));
+        console.log('workouts setting complete');
+      } else {
+        workouts = JSON.parse(localStorage.getItem(workout_storageKey));
+        console.log('workouts is already exist');
+      }
+      drawList();
+    }
+
+    function drawList() {
+      for (var key in workouts) {
+        // key = upper_weight_1
+        // value = name: "데일리전신", "YT"_id: "ddd", img="img/"+key+".jpg"
+        var workout = workouts[key];
+        console.log(workout);
+        $('#workout_list').append(
+          '<div id="' + key + '" class="workout"><img src="img/' + key + '.jpg"><p>' + workout['name'] + '</p></div>'
+        );
+      }
+    }
+
+    function showHealthList() {
+      var select1 = $('#work_part').val();
+      var select2 = $('#work_type').val();
+
+      for (var key in workouts) {
+        console.log(select1);
+        console.log(select2);
+        console.log(key);
+        if (select1 == '_' && select2 == '_') {
+          $('#' + key).hide(); continue;
+        }
+        if (key.indexOf(select1) > -1 && key.indexOf(select2) > -1) {
+          $('#' + key).attr('style', 'display: inline-block;');
+          $('#' + key).show();
+        } else {
+          $('#' + key).hide();
+        }
+      }
+    }
+
+
+
+    $(document).ready(function () {
+      setWorkouts();
+
+      $('#work_part').change(showHealthList);
+      $('#work_type').change(showHealthList);
+
+
+    });
+
+
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '100',
+        width: '200',
+        videoId: 'M7lc1UVf-VE',
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+
+      player2 = new YT.Player('player2', {
+        height: '100',
+        width: '200',
+        videoId: 'sd1MJzmbysg',
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    var done = false;
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+      }
+    }
+    function stopVideo() {
+      player.stopVideo();
+    }
+
+
+  </script>
+
+</body>
+
 </html>
