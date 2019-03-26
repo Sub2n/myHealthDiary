@@ -1,0 +1,106 @@
+body{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size:15px;
+}
+.mian_title{font-size:60px;}
+div{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.container{
+
+}
+.margin_top_10{margin-top:10px;}
+
+#diary_content_wrap{
+    padding-top:50px;
+}
+
+#diary_input{
+    width:500px;
+    margin:30px auto 0px;
+    padding:30px 20px;
+    border:3px solid #31aefd;
+}
+
+#diary_input label{
+    width:100px;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    color:#fff;
+    background: #31aefd;
+}
+
+#diary_input .food_diary input, #diary_input .health_diary input{
+    width:349px;
+    height:50px;
+    line-height: 50px;
+    border:1px solid #31aefd;
+}
+
+#diary_input .write_diary_wrap{
+    margin-top:10px;
+}
+/*
+#diary_input .write_diary_wrap input{
+    width:100px;
+    height:40px;
+    line-height: 40px;
+    font-size:14px;
+    color:#31aefd;
+    background: #fff;
+    border:1px solid #31aefd;
+}
+*/
+.form-check-wrap{
+    padding-left:0px;
+    height:50px;
+    line-height: 50px;
+}
+.form-check{
+    float: left;
+    width:70px;
+    padding:0;
+    font-size:26px;
+    color:#31aefd;
+}
+.write_diary_wrap .form-check i{margin-left:8px;}
+#diary_input .write_diary_wrap .write_diary_save{
+    float: right;
+    width:80px;
+    height:50px;
+    line-height: 50px;
+    color:#fff;
+    background: #31aefd;
+    border:1px solid #31aefd;
+}
+#diary_input .write_diary{margin-top:10px;}
+#diary_input .write_diary textarea{
+    width:100%;
+    border:1px solid #31aefd;
+}
+
+
+
+
+
+#diary_history_wrap{
+    margin-top:100px;
+    padding:50px 0px;
+    background: #f1f1f1
+}
+#diary_history_wrap .diary_history{
+    float: left;
+    width:19.2%;
+    padding:10px;
+    margin-right:1%;
+    font-size:15px;
+    box-sizing: border-box;
+    background: #fff;
+}
+#diary_history_wrap .diary_history:last-child{
+    margin-right:0;
+}
+#diary_history_wrap .action{border:3px solid #31aefd}
