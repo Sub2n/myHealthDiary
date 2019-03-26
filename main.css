@@ -84,3 +84,15 @@ div.mb-3 {
 select.custom-select {
     height: 100%;
 }
+
+div.workout {
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.workout img {
+    width: 200px;
+    height: 100px;
+}

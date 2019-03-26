@@ -86,7 +86,17 @@
                         <option value="strech">스트레칭</option>
                       </select>
                     </div>
-  
+                    
+                    <div id="workout_list">
+                      <div class="workout">
+                        <img src="img/abs_cardio_1.jpg">
+                        <h6>운동^^</h6>
+                      </div>
+                      <div class="workout">
+                        <img src="img/abs_cardio_2.jpg">
+                        <h6>운동^.^</h6>
+                      </div>
+                    </div>
                     <div id="player"></div>
                     <div id="player2"></div>
   
@@ -99,10 +109,11 @@
 
 
     <script type="text/javascript">
-      workout_storageKey = 'workouts';
+      workout_storageKey = 'workouts';  // 모든 운동 list를 localStorage에 저장하는 key
+      workouts = {};                    // 모든 운동 list
 
-      function loadWorkouts() {
-        workouts = {};
+      function setWorkouts() {
+
         if(localStorage.getItem(workout_storageKey) == null){
 
           workouts["upper_weight_1"] = {"name": "강하나 상체 2018", "YT_id": "spdpIgmqt8U"}
@@ -153,9 +164,50 @@
           workouts["full_strech_2"] = {"name": "데일리 전신스트레칭", "YT_id": "xNYJud41I_c"}
           workouts["full_strech_3"] = {"name": "강하나 전신 스트레칭", "YT_id": "VK_3d1adkJc"}
           workouts["full_strech_4"] = {"name": "인생 스트레칭 동작 모음", "YT_id": "n8t3EM-XeBo"}
+
+          localStorage.setItem(workout_storageKey, JSON.stringify(workouts));
+          console.log('workouts setting complete');
+        } else {
+          workouts = JSON.parse(localStorage.getItem(workout_storageKey));
+          console.log('workouts is already exist');
+        }
+          drawList();
+      }
+      
+      function drawList(){
+        for(var key in workouts){
+          // key = upper_weight_1
+          // value = name: "데일리전신", "YT"_id: "ddd", img="img/"+key+".jpg"
+          var workout = workouts[key];
+          console.log(workout);
+          $('#workout_list').append(
+            '<div class="workout"><img src="img/'+key+'.jpg"><h6>'+workout[name]+'</h6></div>'
+          );
         }
       }
 
+      function showHealthList(){
+        var select1 = $('#work_part').val();
+        var select2 = $('#work_type').val();
+
+        for(var key in workouts){
+          if(key.indexOf(select1) != -1 || key.indexOf(select2) != -1){
+
+          }
+        }
+      }
+
+
+
+      $(document).ready(function(){
+        setWorkouts();
+
+
+
+
+      });
+
+      
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
