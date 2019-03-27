@@ -14,77 +14,94 @@
 
 </head>
 <body>
-    <div id="diary_content_wrap" class="container"><!-- diary input wrap-->
-        <h2 class="main_title text-center">내 건강 일기</h2>
-        <div id="diary_input">
-            <form class="form" action="#">
-                <div class="food_diary">
-                    <label name="">식단</label>
-                    <input type="text" id="" name="" value="">   
-                </div>
+    <div id="nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">logo</div>
+                <div class="col-sm-10">글자</div>
+            </div>
+        </div>
+    </div>
+    <div id="diary_wrap">
+        <div class="prev-icon">
+            <img src="img/prev-icon.png">
+        </div>
 
-                <!-- Workout 기록 반영
-                    19-03-27 15:52
-                    Subin 시작
-                -->
-                <div class="health_diary">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">운동<img src="img/startup.png"></span>
-                        </div>
-                        <input id="workout_record" type="text" class="form-control" placeholder="운동리스트" aria-describedby="basic-addon1">
+        <div id="diary_content_wrap"><!-- diary input wrap-->
+            <h2 class="main_title text-center">내 건강 일기</h2>
+            <div id="diary_input">
+                <form class="form" action="#">
+                    <div class="food_diary">
+                        <label name="">식단</label>
+                        <input type="text" id="" name="" value="">   
                     </div>
-                          
-                </div>  
-                <div class="write_diary_wrap">
-                    <div class="form-check-wrap">
-                        <div class="form-check">
-                            <input type="radio" class="check-btn" id="good" value="잘했음"><i class="far fa-grin"></i>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="check-btn" id="normal" value="보통"><i class="far fa-flushed"></i>
-                        </div>
-                        <div class="form-check">
-                            <input type="radio" class="check-btn" id="bad" value="힘들었음"><i class="far fa-angry"></i>
-                        </div>
-                        <button id="SaveButton" class="write_diary_save">저장하기</button>
-                    </div>
-                    
-                    <div class="write_diary">
+    
+                    <!-- Workout 기록 반영
+                        19-03-27 15:52
+                        Subin 시작
+                    -->
+                    <div class="health_diary">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="emotion"></span>
+                                <span class="input-group-text" id="basic-addon1">운동<img src="img/startup.png"></span>
                             </div>
-                            <input name="content" id="writeDiary" type="text" class="form-control" placeholder="나의 일기" aria-describedby="basic-addon1">
+                            <input id="workout_record" type="text" class="form-control" placeholder="운동리스트" aria-describedby="basic-addon1">
                         </div>
+                              
                     </div>  
-                </div>           
-            </form>
+                    <div class="write_diary_wrap">
+                        <div class="form-check-wrap">
+                            <div class="form-check">
+                                <input type="radio" class="check-btn" id="good" value="잘했음"><i class="far fa-grin"></i>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="check-btn" id="normal" value="보통"><i class="far fa-flushed"></i>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="check-btn" id="bad" value="힘들었음"><i class="far fa-angry"></i>
+                            </div>
+                            <button id="SaveButton" class="write_diary_save">저장하기</button>
+                        </div>
+                        
+                        <div class="write_diary">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="emotion"></span>
+                                </div>
+                                <input name="content" id="writeDiary" type="text" class="form-control" placeholder="나의 일기" aria-describedby="basic-addon1">
+                            </div>
+                        </div>  
+                    </div>           
+                </form>
+            </div>
+        </div><!-- //diary input wrap-->
+
+
+        <div class="next-icon">
+            <img src="img/next-icon.png">
         </div>
-    </div><!-- //diary input wrap-->
+    </div>    
+
 
     <div id="diary_history_wrap">  <!-- diary_history_wrap -->      
         <div class="container">
-   
           <div id="section">           
-            <!-- Modal 
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body modal-diary-body">
-                            바디내용
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>  -->
+
+          </div>
         </div>
-     
     </div>
 
+    <div id="footer" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h2>HealthDiary</h2>
+                </div>
+                <div class="col-sm-2">하단</div>
+                <div class="col-sm-8">git url</div>
+            </div>
+        </div>
+    </div>
 
 
     <script type="text/javascript">
@@ -253,6 +270,14 @@
                 
                 saveDiary();
             }); // click event end 
+            
+        });
+
+        $('.prev-icon img').click(function(){
+            alert("이전 일기 불러오기");
+        });
+        $('.next-icon img').click(function(){
+            alert("다음 일기 불러오기");
         });
         
     </script>
