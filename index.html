@@ -129,112 +129,213 @@
       workouts = {};                    // 모든 운동 list
       date = [];
 
-      function load(){
-        storage_key = new Date().toISOString().slice(2, 10);
-        if(localStorage.getItem(date_storageKey) != null){
-          date = JSON.parse(localStorage.getItem(date_storageKey));
-        }
-        
+    function load(){
+      storage_key = new Date().toISOString().slice(2, 10);
+      if(localStorage.getItem(date_storageKey) != null){
+        date = JSON.parse(localStorage.getItem(date_storageKey));
       }
       
-      //여기부터해야함
-      function saveWorkout(){
-        var info = {};
-      }
+    }
+    
+    function setWorkouts() {
 
-      function setWorkouts() {
+      if(localStorage.getItem(workout_storageKey) == null){
 
-        if(localStorage.getItem(workout_storageKey) == null){
+        workouts["upper_weight_1"] = {"name": "강하나 상체 2018", "YT_id": "spdpIgmqt8U"}
+        workouts["upper_weight_2"] = {"name": "앉아서 하는 맨몸 상체운동", "YT_id": "C3TqpGgnIoI"}
+        workouts["upper_weight_3"] = {"name": "주원홈트 상체근력", "YT_id": "jKtVCY7B33s"}
+        workouts["upper_weight_4"] = {"name": "팔뚝살 완전 제거 운동", "YT_id": "cXOwm_v3EpQ"}
+        workouts["upper_weight_5"] = {"name": "상체 덤벨 운동", "YT_id": "XmouqUNwFdY"}
+        workouts["upper_cardio_1"] = {"name": "팔쭉빠", "YT_id": "4ARak8G0g-Q"}
+        workouts["upper_cardio_2"] = {"name": "팔뚝살, 어깨 라인 올인원!", "YT_id": "QvLB_cIzhXs"}
+        workouts["upper_strech_1"] = {"name": "강하나 상체 스트레칭 2019", "YT_id": "0kuJxzjz5S8"}
+        workouts["upper_strech_2"] = {"name": "승모근, 어깨 스트레칭", "YT_id": "l2zN7cM0vaE"}
+        workouts["upper_strech_3"] = {"name": "아이돌 일자어깨 스트레칭", "YT_id": "z3x_skEID3g"}
+        workouts["upper_strech_4"] = {"name": "어깨통증 목선 등에 탁월한 스트레칭", "YT_id": "gqF6hmK_aso"}
 
-          workouts["upper_weight_1"] = {"name": "강하나 상체 2018", "YT_id": "spdpIgmqt8U"}
-          workouts["upper_weight_2"] = {"name": "앉아서 하는 맨몸 상체운동", "YT_id": "C3TqpGgnIoI"}
-          workouts["upper_weight_3"] = {"name": "주원홈트 상체근력", "YT_id": "jKtVCY7B33s"}
-          workouts["upper_weight_4"] = {"name": "팔뚝살 완전 제거 운동", "YT_id": "cXOwm_v3EpQ"}
-          workouts["upper_weight_5"] = {"name": "상체 덤벨 운동", "YT_id": "XmouqUNwFdY"}
-          workouts["upper_cardio_1"] = {"name": "팔쭉빠", "YT_id": "4ARak8G0g-Q"}
-          workouts["upper_cardio_2"] = {"name": "팔뚝살, 어깨 라인 올인원!", "YT_id": "QvLB_cIzhXs"}
-          workouts["upper_strech_1"] = {"name": "강하나 상체 스트레칭 2019", "YT_id": "0kuJxzjz5S8"}
-          workouts["upper_strech_2"] = {"name": "승모근, 어깨 스트레칭", "YT_id": "l2zN7cM0vaE"}
-          workouts["upper_strech_3"] = {"name": "아이돌 일자어깨 스트레칭", "YT_id": "z3x_skEID3g"}
-          workouts["upper_strech_4"] = {"name": "어깨통증 목선 등에 탁월한 스트레칭", "YT_id": "gqF6hmK_aso"}
-
-          workouts["abs_weight_1"] = {"name": "누워서 하는 복근운동", "YT_id": "zcQ16cfJN9Q"}
-          workouts["abs_weight_2"] = {"name": "배가 찢어지는 초고속 복근 운동", "YT_id": "6G-WXg3bZnI"}
-          workouts["abs_weight_3"] = {"name": "맨몸 10분 복근운동", "YT_id": "EFadnuaH-Jg"}
-          workouts["abs_weight_4"] = {"name": "레베카 루이즈 복근", "YT_id": "UpCWMLVgHhE"}
-          workouts["abs_weight_5"] = {"name": "완벽한 복근과 평평한 배 완성하기", "YT_id": "W1r3NE5BUiA"}
-          workouts["abs_cardio_1"] = {"name": "쉽고 강력한 복부 유산소", "YT_id": "JYGg1ScfS88"}
-          workouts["abs_cardio_2"] = {"name": "뱃살 옆구리살 한방 운동", "YT_id": "jSrlMIlNHno"}
-          workouts["abs_cardio_3"] = {"name": "무조건! 뱃살 빠지는 운동 BEST5", "YT_id": "iOSYLKBk894"}
-          workouts["abs_cardio_4"] = {"name": "뱃쭉빠", "YT_id": "CAaJAMI7ux4"}
-          workouts["abs_strech_1"] = {"name": "잘록한 허리 만드는 허리 복부 스트레칭", "YT_id": "xRIfOwPYaUs"}
-          workouts["abs_strech_2"] = {"name": "복근운동 후 완벽한 스트레칭", "YT_id": "5dTfcUWluOY"}
-          workouts["abs_strech_3"] = {"name": "복부/허리 스트레칭", "YT_id": "ixWjfoved3Q"}
-          
-          workouts["bottom_weight_1"] = {"name": "강하나 하체 2018", "YT_id": "UQ8AC8eYDZI"};
-          workouts["bottom_weight_2"] = {"name": "Miley Cyrus Workout: Sexy Legs", "YT_id": "MG69sFM1UIw"};
-          workouts["bottom_weight_3"] = {"name": "Bootyful Butt Challenge", "YT_id": "rwVzamFR-tg"}
-          workouts["bottom_cardio_1"] = {"name": "허벅지 안쪽살 유산소 운동", "YT_id": "laglzuyfeKA"}
-          workouts["bottom_cardio_2"] = {"name": "허쭉빠", "YT_id": "zFielDkVc10"}
-          workouts["bottom_strech_1"] = {"name": "강하나 하체 스트레칭 2018", "YT_id": "LZWORB39zQk"}
-          workouts["bottom_strech_2"] = {"name": "다노 레전드 스트레칭", "YT_id": "VVn5IUM8sms"}
-          workouts["bottom_strech_3"] = {"name": "날하스", "YT_id": "--MMq6I07b4"}
-          workouts["bottom_strech_4"] = {"name": "강하나 하체 스트레칭 2008", "YT_id": "qjfLSqr6erU"}
-
-
-          workouts["full_weight_1"] = {"name": "최고의 전신 근력운동 BEST5", "YT_id": "Iaa8YNDRbhg"}
-          workouts["full_weight_2"] = {"name": "전신 올인원 운동", "YT_id": "cMkZ6A7wngk"}
-          workouts["full_weight_3"] = {"name": "무조건 살빠지는 전신 다이어트 운동", "YT_id": "3VouSaW_LPw"}
-          workouts["full_weight_4"] = {"name": "쉽고 간단한! 전신 다이어트 운동", "YT_id": "qa_ZbqHQCI0"}
-          workouts["full_cardio_1"] = {"name": "칼소폭", "YT_id": "VNQpP6C1fJg"}
-          workouts["full_cardio_2"] = {"name": "칼로리 버닝 전신 유산소", "YT_id": "rPEJyLNteNk"}
-          workouts["full_cardio_3"] = {"name": "칼소폭2", "YT_id": "MMswNnLdHso"}
-          workouts["full_cardio_4"] = {"name": "살쭉빠", "YT_id": "4m_XJVP7YQI"}
-          workouts["full_strech_1"] = {"name": "초간단! 전신 스트레칭 끝판왕 BEST5", "YT_id": "2LyDkE7sDec"}
-          workouts["full_strech_2"] = {"name": "데일리 전신스트레칭", "YT_id": "xNYJud41I_c"}
-          workouts["full_strech_3"] = {"name": "강하나 전신 스트레칭", "YT_id": "VK_3d1adkJc"}
-          workouts["full_strech_4"] = {"name": "인생 스트레칭 동작 모음", "YT_id": "n8t3EM-XeBo"}
-
-          localStorage.setItem(workout_storageKey, JSON.stringify(workouts));
-          console.log('workouts setting complete');
-        } else {
-          workouts = JSON.parse(localStorage.getItem(workout_storageKey));
-          console.log('workouts is already exist');
-        }
-        drawList();
-      }
-      
-      function drawList(){
-        for(var key in workouts){
-          // key = upper_weight_1
-          // value = name: "데일리전신", "YT"_id: "ddd", img="img/"+key+".jpg"
-          var workout = workouts[key];
-          console.log(workout);
-          $('#workout_list').append(
-            '<div id="'+key+'" class="workout" data-id="'+key+'" data-toggle="modal" data-target="#popModal"><img src="img/'+key+'.jpg"><p>'+workout['name']+'</p></div>'
-          );
-        }
-      }
-
-      function showHealthList(){
-        var select1 = $('#work_part').val();
-        var select2 = $('#work_type').val();
+        workouts["abs_weight_1"] = {"name": "누워서 하는 복근운동", "YT_id": "zcQ16cfJN9Q"}
+        workouts["abs_weight_2"] = {"name": "배가 찢어지는 초고속 복근 운동", "YT_id": "6G-WXg3bZnI"}
+        workouts["abs_weight_3"] = {"name": "맨몸 10분 복근운동", "YT_id": "EFadnuaH-Jg"}
+        workouts["abs_weight_4"] = {"name": "레베카 루이즈 복근", "YT_id": "UpCWMLVgHhE"}
+        workouts["abs_weight_5"] = {"name": "완벽한 복근과 평평한 배 완성하기", "YT_id": "W1r3NE5BUiA"}
+        workouts["abs_cardio_1"] = {"name": "쉽고 강력한 복부 유산소", "YT_id": "JYGg1ScfS88"}
+        workouts["abs_cardio_2"] = {"name": "뱃살 옆구리살 한방 운동", "YT_id": "jSrlMIlNHno"}
+        workouts["abs_cardio_3"] = {"name": "무조건! 뱃살 빠지는 운동 BEST5", "YT_id": "iOSYLKBk894"}
+        workouts["abs_cardio_4"] = {"name": "뱃쭉빠", "YT_id": "CAaJAMI7ux4"}
+        workouts["abs_strech_1"] = {"name": "잘록한 허리 만드는 허리 복부 스트레칭", "YT_id": "xRIfOwPYaUs"}
+        workouts["abs_strech_2"] = {"name": "복근운동 후 완벽한 스트레칭", "YT_id": "5dTfcUWluOY"}
+        workouts["abs_strech_3"] = {"name": "복부/허리 스트레칭", "YT_id": "ixWjfoved3Q"}
         
-        for(var key in workouts){
-          // 모든 select가 운동 부위, 운동 종류를 선택하고 있을 경우
-          if(select1 == '_' && select2 == '_'){
-            $('#'+key).hide(); continue;
-          }
-          if(key.indexOf(select1) > -1 && key.indexOf(select2) > -1){
-            $('#'+key).attr('style', 'display: inline-block;');
-            $('#'+key).show();
-          }else{
-            $('#'+key).hide();
-          }
+        workouts["bottom_weight_1"] = {"name": "강하나 하체 2018", "YT_id": "UQ8AC8eYDZI"};
+        workouts["bottom_weight_2"] = {"name": "Miley Cyrus Workout: Sexy Legs", "YT_id": "MG69sFM1UIw"};
+        workouts["bottom_weight_3"] = {"name": "Bootyful Butt Challenge", "YT_id": "rwVzamFR-tg"}
+        workouts["bottom_cardio_1"] = {"name": "허벅지 안쪽살 유산소 운동", "YT_id": "laglzuyfeKA"}
+        workouts["bottom_cardio_2"] = {"name": "허쭉빠", "YT_id": "zFielDkVc10"}
+        workouts["bottom_strech_1"] = {"name": "강하나 하체 스트레칭 2018", "YT_id": "LZWORB39zQk"}
+        workouts["bottom_strech_2"] = {"name": "다노 레전드 스트레칭", "YT_id": "VVn5IUM8sms"}
+        workouts["bottom_strech_3"] = {"name": "날하스", "YT_id": "--MMq6I07b4"}
+        workouts["bottom_strech_4"] = {"name": "강하나 하체 스트레칭 2008", "YT_id": "qjfLSqr6erU"}
+
+
+        workouts["full_weight_1"] = {"name": "최고의 전신 근력운동 BEST5", "YT_id": "Iaa8YNDRbhg"}
+        workouts["full_weight_2"] = {"name": "전신 올인원 운동", "YT_id": "cMkZ6A7wngk"}
+        workouts["full_weight_3"] = {"name": "무조건 살빠지는 전신 다이어트 운동", "YT_id": "3VouSaW_LPw"}
+        workouts["full_weight_4"] = {"name": "쉽고 간단한! 전신 다이어트 운동", "YT_id": "qa_ZbqHQCI0"}
+        workouts["full_cardio_1"] = {"name": "칼소폭", "YT_id": "VNQpP6C1fJg"}
+        workouts["full_cardio_2"] = {"name": "칼로리 버닝 전신 유산소", "YT_id": "rPEJyLNteNk"}
+        workouts["full_cardio_3"] = {"name": "칼소폭2", "YT_id": "MMswNnLdHso"}
+        workouts["full_cardio_4"] = {"name": "살쭉빠", "YT_id": "4m_XJVP7YQI"}
+        workouts["full_strech_1"] = {"name": "초간단! 전신 스트레칭 끝판왕 BEST5", "YT_id": "2LyDkE7sDec"}
+        workouts["full_strech_2"] = {"name": "데일리 전신스트레칭", "YT_id": "xNYJud41I_c"}
+        workouts["full_strech_3"] = {"name": "강하나 전신 스트레칭", "YT_id": "VK_3d1adkJc"}
+        workouts["full_strech_4"] = {"name": "인생 스트레칭 동작 모음", "YT_id": "n8t3EM-XeBo"}
+
+        localStorage.setItem(workout_storageKey, JSON.stringify(workouts));
+        console.log('workouts setting complete');
+      } else {
+        workouts = JSON.parse(localStorage.getItem(workout_storageKey));
+        console.log('workouts is already exist');
+      }
+      drawList();
+    }
+    
+    function drawList(){
+      for(var key in workouts){
+        // key = upper_weight_1
+        // value = name: "데일리전신", "YT"_id: "ddd", img="img/"+key+".jpg"
+        var workout = workouts[key];
+        $('#workout_list').append(
+          '<div id="'+key+'" class="workout" data-id="'+key+'" data-toggle="modal" data-target="#popModal"><img src="img/'+key+'.jpg"><p>'+workout['name']+'</p></div>'
+        );
+      }
+    }
+
+    function showHealthList(){
+      var select1 = $('#work_part').val();
+      var select2 = $('#work_type').val();
+      
+      for(var key in workouts){
+        // 모든 select가 운동 부위, 운동 종류를 선택하고 있을 경우
+        if(select1 == '_' && select2 == '_'){
+          $('#'+key).hide(); continue;
+        }
+        if(key.indexOf(select1) > -1 && key.indexOf(select2) > -1){
+          $('#'+key).attr('style', 'display: inline-block;');
+          $('#'+key).show();
+        }else{
+          $('#'+key).hide();
         }
       }
+    }
 
-     
+
+    //유튜브  
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+      
+    }
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+              event.target.playVideo();
+            }
+
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    var done = false;
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+      }
+    }
+    function stopVideo() {
+   
+      player.stopVideo();
+      
+    }
+
+    function showHealthDetail(key){
+
+      var workout = workouts[key];
+      var id = workout['YT_id'];
+      $('#saveHealthButton').attr('data-key',key);
+      $('#popModal').modal('show');
+      $('#popTitle').text(workout['name']);
+
+      player = new YT.Player('player', {
+        height: '300',
+        width: '450',
+        videoId: id,
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      }); 
+
+    }
+
+    //여기부터해야함
+    function saveWorkout(id){
+      // 오늘 날짜를 저장한다.
+      // 날짜를 받아와서 19-03-26 형식으로 만들어주는 코드
+      // localStorage key로 쓸거임
+      var today = new Date().toISOString().slice(2, 10);
+      var date_info = {};
+      var workout = workouts[id];
+      var workout_names = [];
+
+      var isExist = false; //일단 없다는 가정 하에 false로 해놓는데, 있으면 true로 바꿔준다.
+      for(var i in date){
+        if(date.indexOf(today) >= 0) {
+          //오늘 날짜가 등록되어 있으면 localStorage에서 불러온다.
+          date_info = JSON.parse(localStorage.getItem(today));
+          workout_names = date_info['workout'];
+          isExist = true;
+        }
+      }
+      if(isExist == false) {
+        //없으니까 내가 만들고 저장할 정보를 담는다.
+        workout_names.push(workout['name']);
+        date_info = {
+                      'food': {},
+                      'workout': [],
+                      'diary': {}
+                    };
+        date_info['workout'] = workout_names;
+        
+      } else { //있으면 아까 불러왔던 date_info에 내가 저장할 정보를 담는다.
+          var isNameExist = false; //없다고 가정
+          for(var name in workout_names){
+            if(workout_names.indexOf(workout['name']) >= 0){
+              //있으면
+              isNameExist = true; break;
+            }
+          }
+          if(isNameExist == false){
+            // 없으면 운동 이름 넣고 배열을 dictionary에 넣음
+            workout_names.push(workout['name']);
+            date_info['workout'] = workout_names;
+          }
+      }
+        // 로컬스토리지에 저장한다.
+        localStorage.setItem(today, JSON.stringify(date_info));
+
+        
+        date.push(today);
+        localStorage.setItem('date', JSON.stringify(date));
+        
+    }
 
       $(document).ready(function(){
         load();
@@ -245,64 +346,18 @@
 
         $('div.workout').click(function(){
           //showWorkoutDetail
-
           var key = this.id;
-          var workout = workouts[key];
-          var id = workout['YT_id'];
-
-          $('#popModal').modal('show');
-          $('#popTitle').text(workout['name']);
-          console.log(id);
-          player = new YT.Player('player', {
-            height: '300',
-            width: '450',
-            videoId: id,
-            events: {
-              'onReady': onPlayerReady,
-              'onStateChange': onPlayerStateChange
-            }
-          }); 
+          showHealthDetail(key);
         });
 
         $('#saveHealthButton').click(function(){
-          saveWorkout();
+          var id = $(this).attr('data-key');
+          saveWorkout(id);
         });
 
       });
 
-      //유튜브  
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-
-      function onYouTubeIframeAPIReady() {
-        
-      }
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-                event.target.playVideo();
-              }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
-        }
-      }
-      function stopVideo() {
-        player.stopVideo();
-      }
+      
 
       /*
       $('#popModal').on('show.bs.modal', function (event) {
