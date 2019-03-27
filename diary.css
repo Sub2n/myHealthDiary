@@ -84,23 +84,27 @@ div{
 
 
 
-
+.modal-dialog{
+    margin:5rem auto;
+}
 
 #diary_history_wrap{
+    position: relative;
     margin-top:100px;
     padding:50px 0px;
-    background: #f1f1f1
+    background: #f1f1f1;
 }
-#diary_history_wrap .diary_history{
+.date_btn {
     float: left;
-    width:19.2%;
+    width:20%;
     padding:10px;
     margin-right:1%;
     font-size:15px;
     box-sizing: border-box;
     background: #fff;
 }
-#diary_history_wrap .diary_history:last-child{
+.date_btn:last-child{
     margin-right:0;
 }
-#diary_history_wrap .action{border:3px solid #31aefd}
+
+
