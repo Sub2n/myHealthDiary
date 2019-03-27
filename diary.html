@@ -129,11 +129,11 @@
             //input 값 초기화, readonly
             $('#workout_record').text('');
             var key = new Date().toISOString().slice(2, 10);
-            var name_list = [];
-            var date_info = {};
+            
+            var date_info = date_info = JSON.parse(localStorage.getItem(key));
+            var name_list = name_list = date_info['workout'];
+
             var workout_list = "";
-            date_info = JSON.parse(localStorage.getItem(key));
-            name_list = date_info['workout'];
 
             for(var i in name_list){
                 workout_list += name_list[i]+"\n";
@@ -262,8 +262,27 @@
             loadDiary();
         }
 
-        //28일 할 것!!
-        function setWorkoutRecords(){
+        // date_btn 클릭시 해당 날짜의 운동기록을 세팅한다.
+        // subin 19-03-27 19:04 completed
+        function setWorkoutRecords(btn){
+
+            // 해당 버튼의 날짜 값을 가져와서
+            var key = $(btn).attr("data-date");
+
+            // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
+            var date_info = JSON.parse(localStorage.getItem(key));
+
+            var name_list = name_list = date_info['workout'];
+
+            var workout_list = "";
+
+            for(var i in name_list){
+                workout_list += name_list[i]+"\n";
+            }
+
+            console.log(workout_list);
+            $('#workout_record').prop('readonly', true);
+            $('#workout_record').text(workout_list);
 
         }
 
