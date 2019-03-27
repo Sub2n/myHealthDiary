@@ -10,72 +10,54 @@
     <link rel="stylesheet" href="style.css"><!-- 외부 스타일 불러오는 방법 -->
     <link rel="stylesheet" href="main.css"><!-- 외부 스타일 불러오는 방법 -->
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
-  <!-- webfont -->
-  <link rel="stylesheet" href="style.css"><!-- 외부 스타일 불러오는 방법 -->
-  <link rel="stylesheet" href="main.css"><!-- 외부 스타일 불러오는 방법 -->
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </head>
-
 <body>
-  <div class="container">
-    <!-- Content 1170px -->
-    <div class="finedust">
-      <h2 class="main_title text-center"><span>오늘의 미세먼지</span></h2>
-      <!-- 부트스트랩 기본 class중에 text-center 라는 클래스명은 자동으로 text-center 됨.-->
-    </div>
-    <div class="main_contain row">
-      <div class="food_contain col-sm-6">
-        <button id="food_title" class="btn btn-primary">식단 입력</button>
-        <form class="form-inline">
-          <div class="form-group mb-2">
-            <label for="staticEmail2" class="sr-only">칼로리</label>
-            <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="칼로리" />
-          </div>
-          <div class="form-group mx-sm-3 mb-2">
-            <label for="inputPassword2" class="sr-only"></label>
-            <input type="password" class="form-control" id="inputPassword2" placeholder="Calorie" />
-          </div>
-          <button type="button" class="btn btn-primary" id="inputCalorie">
-            칼로리 입력
-          </button>
-        </form>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">추천 식단 리스트</label>
-          <select class="form-control" id="selectFood">
-            <option id="selectFoodOne">01 다이어트식 620kcal</option>
-            <option id="selectFoodTwo">02 고단백식 840kcal</option>
-            <option id="selectFoodThree">03 건강식 910kcal</option>
-          </select>
+    <div class="container"> <!-- Content 1170px -->
+        <div class="finedust">
+          <h2 class="main_title text-center"><span>오늘의 미세먼지</span></h2> <!-- 부트스트랩 기본 class중에 text-center 라는 클래스명은 자동으로 text-center 됨.-->
         </div>
-        <button type="button" class="btn btn-primary" id="inputFood">
-          내 식단 입력 input
-        </button>
-        <button type="button" class="btn btn-primary" id="saveFood">저장하기 save</button>
-
-        <!-- Button trigger modal -->
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="main_contain row">
+            <div class="food_container col-sm-6">
+              <div class="food_contain">
+                <button id="food_title" class="btn btn-primary">식단 입력</button>
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                      <label for="staticEmail2" class="sr-only">칼로리</label>
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail2"] = "칼로리">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                      <label for="inputPassword2" class="sr-only"></label>
+                      <input type="password" class="form-control" id="inputPassword2" placeholder="Calorie">
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Go</button>
+                  </form>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">showFoodList()1</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect2">showList()2</label>
+                    <select multiple class="form-control" id="exampleFormControlSelect2">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                  <button type="button" class="btn btn-primary">저장?</button>
+              </div>
+            </div> 
             <!-- 부트스트랩은 12개로 나뉘어져서 2개로 자동 넓이 조정하려면 col-sm-6 , 3개의 레이아웃이 나오고 싶으면 col-sm-4 x3 해서 총 12개로 만든다. div class=row는 12개 나눌때 감싸져야 하는 div -->
             <div class="workout_container col-sm-6">
                 <div class="workout_contain">
@@ -189,148 +171,21 @@
               </div>
             </div>
         </div>
-      </div>
-      <!-- 부트스트랩은 12개로 나뉘어져서 2개로 자동 넓이 조정하려면 col-sm-6 , 3개의 레이아웃이 나오고 싶으면 col-sm-4 x3 해서 총 12개로 만든다. div class=row는 12개 나눌때 감싸져야 하는 div -->
-      <div class="workout_container col-sm-6">
-        <div class="workout_contain">
-          <button id="workout_title" class="btn btn-primary">운동 선택</button>
-          <div id="selectOption">
-
-            <div class="workPart input-group mb-3">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary" type="button">PART</button>
-              </div>
-              <select id="work_part" class="custom-select" aria-label="Example select with button addon">
-                <option value="_">운동 부위</option>
-                <option value="upper">상체</option>
-                <option value="abs">복근</option>
-                <option value="bottom">하체</option>
-                <option value="full">전신</option>
-              </select>
-
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary" type="button">TYPE</button>
-              </div>
-              <select id="work_type" class="custom-select" aria-label="Example select with button addon">
-                <option value="_">운동 종류</option>
-                <option value="weight">근력</option>
-                <option value="cardio">유산소</option>
-                <option value="strech">스트레칭</option>
-              </select>
-            </div>
-            
-            <div id="workout_list">
-
-            </div>
-
-            <div id="player"></div>
-            <div id="player2"></div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <button id="diary_button" type="button" class="btn btn-primary">
-    내 일기
-  </button>
-  </div>
-  </div>
+    <!-- 승현님 JavaScript -->
+    <script type="text/javascript">
+    
+    </script>
 
-  <script type="text/javascript">
-
-/* • localStorage 구조
-
-Key                                     value
-date                  ["19-03-26", "19-03-27", "19-03-28"]
-19-03-26            {"food": {"name": 샐러드, "calorie":300},
-                    "workout":{"name": 하체뽀개기, }
-                    "diary": {"emotion": "good", "content":"오늫 좋았다"}
-         }
-
-
-• Html 코드에서 localStorage 접근하는 방법 */
-/* date =[];     // date라는 배열을 전역으로 선언해놓는다.
-
-$(document).ready(function(){
-load();     //date를 getItem으로 받아오기가 포함되어있음
-
-
-});
-
-function load() {
-//localStorage의 date를 불러옴
-if(localStorage.getItem('date') != null){
-date = JSON.parse(localStorage.getItem('date'));
-}
-
-// 오늘 날짜를 저장한다.
-// 날짜를 받아와서 19-03-26 형식으로 만들어주는 코드
-// localStorage key로 쓸거임
-var today = new Date().toISOString().slice(2, 10);
-
-var isExist = false;      //일단 없다는 가정 하에 false로 해놓는데, 있으면 true로 바꿔준다.
-for(var i in date){
-if(date[today]) {
- var date_info = JSON.parse(localStorage.getItem(today));
- isExist = true;
-}
-}
-if(isExist == false) {
-//없으니까 내가 만들고 저장할 정보를 담는다.
-var date_info = {
-                'food': {"name": 샐러드, "calorie": 300, "name": 다이어트식, "calorie": 620, "name": 고단백식, "calorie": 840, "name": 건강식, "calorie": 910},
-                'workout': [],
-                'diary': {'emotion':emotion, 'content':text}
-        };
-
-} else { //있으면 아까 불러왔던 date_info에 내가 저장할 정보를 담는다.
-date_info['food'] = {"name": 샐러드, "calorie": 300, "name": 다이어트식, "calorie": 620, "name": 고단백식, "calorie": 840, "name": 건강식, "calorie": 910};
-}
-
-
-// 로컬스토리지에 저장한다.
-localStorage.setItem(today, JSON.stringify(date_info));
-
-if(isExist == false){
-    date.push(today);
-localStorage.setItem('date', date);
-} */
-
-//
-    $(document).ready(function () {
-      $('#inputFood').click(function (e) {
-        e.preventDefault();
-        console.log('#inputFood');
-      });
-      $('#saveFood').click(function (e) {
-        e.preventDefault();
-        console.log('#saveFood');
-      });
-      $('#checkedOne').click(function (e) {
-        e.preventDefault();
-        console.log('#checkedOne');
-      });
-      $('#checkedTwo').click(function (e) {
-        e.preventDefault();
-        console.log('#checkedTwo');
-      });
-      $('#inputCalorie').click(function (e) {
-        e.preventDefault();
-        console.log('#inputCalorie');
-      });
-      $('select#selectFood').change(function() {
-        var selected = $('select#selectFood').val();
-        alert(selected);
-      });
-    });
-
-    //
-    date_storageKey = 'date';
+    <!-- Subin JavaScript -->
+    <script type="text/javascript">
+      date_storageKey = 'date';
       storage_key = '';
       workout_storageKey = 'workouts';  // 모든 운동 list를 localStorage에 저장하는 key
       workouts = {};                    // 모든 운동 list
       date = [];
+
       function load(){
         storage_key = new Date().toISOString().slice(2, 10);
         if(localStorage.getItem(date_storageKey) != null){
@@ -340,7 +195,9 @@ localStorage.setItem('date', date);
       }
       
       function setWorkouts() {
+
         if(localStorage.getItem(workout_storageKey) == null){
+
           workouts["upper_weight_1"] = {"name": "강하나 상체 2018", "YT_id": "spdpIgmqt8U"}
           workouts["upper_weight_2"] = {"name": "앉아서 하는 맨몸 상체운동", "YT_id": "C3TqpGgnIoI"}
           workouts["upper_weight_3"] = {"name": "주원홈트 상체근력", "YT_id": "jKtVCY7B33s"}
@@ -352,6 +209,7 @@ localStorage.setItem('date', date);
           workouts["upper_strech_2"] = {"name": "승모근, 어깨 스트레칭", "YT_id": "l2zN7cM0vaE"}
           workouts["upper_strech_3"] = {"name": "아이돌 일자어깨 스트레칭", "YT_id": "z3x_skEID3g"}
           workouts["upper_strech_4"] = {"name": "어깨통증 목선 등에 탁월한 스트레칭", "YT_id": "gqF6hmK_aso"}
+
           workouts["abs_weight_1"] = {"name": "누워서 하는 복근운동", "YT_id": "zcQ16cfJN9Q"}
           workouts["abs_weight_2"] = {"name": "배가 찢어지는 초고속 복근 운동", "YT_id": "6G-WXg3bZnI"}
           workouts["abs_weight_3"] = {"name": "맨몸 10분 복근운동", "YT_id": "EFadnuaH-Jg"}
@@ -374,6 +232,8 @@ localStorage.setItem('date', date);
           workouts["bottom_strech_2"] = {"name": "다노 레전드 스트레칭", "YT_id": "VVn5IUM8sms"}
           workouts["bottom_strech_3"] = {"name": "날하스", "YT_id": "--MMq6I07b4"}
           workouts["bottom_strech_4"] = {"name": "강하나 하체 스트레칭 2008", "YT_id": "qjfLSqr6erU"}
+
+
           workouts["full_weight_1"] = {"name": "최고의 전신 근력운동 BEST5", "YT_id": "Iaa8YNDRbhg"}
           workouts["full_weight_2"] = {"name": "전신 올인원 운동", "YT_id": "cMkZ6A7wngk"}
           workouts["full_weight_3"] = {"name": "무조건 살빠지는 전신 다이어트 운동", "YT_id": "3VouSaW_LPw"}
@@ -386,6 +246,7 @@ localStorage.setItem('date', date);
           workouts["full_strech_2"] = {"name": "데일리 전신스트레칭", "YT_id": "xNYJud41I_c"}
           workouts["full_strech_3"] = {"name": "강하나 전신 스트레칭", "YT_id": "VK_3d1adkJc"}
           workouts["full_strech_4"] = {"name": "인생 스트레칭 동작 모음", "YT_id": "n8t3EM-XeBo"}
+
           localStorage.setItem(workout_storageKey, JSON.stringify(workouts));
           console.log('workouts setting complete');
         } else {
@@ -405,6 +266,7 @@ localStorage.setItem('date', date);
           );
         }
       }
+
       function showHealthList(){
         var select1 = $('#work_part').val();
         var select2 = $('#work_type').val();
@@ -573,16 +435,18 @@ localStorage.setItem('date', date);
       }
 
       $(document).ready(function(){
-
         load();
         setWorkouts();
+
         $('#work_part').change(showHealthList);
         $('#work_type').change(showHealthList);
+
         $('div.workout').click(function(){
           //showWorkoutDetail
           var key = this.id;
           showHealthDetail(key);
         });
+
         $('#saveHealthButton').click(function(){
           var id = $(this).attr('data-key');
           saveWorkout(id);
@@ -599,27 +463,10 @@ localStorage.setItem('date', date);
         });
 
       });
-
-      
-
-      /*
-      $('#popModal').on('show.bs.modal', function (event) {
-        var div = $(event.relatedTarget) // Button that triggered the modal
-        console.log(div);
-        var key = div.data('id') // Extract info from data-* attributes
-        console.log(key);
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var workout = workouts[key];
-        var id = workout['YT_id'];
-        
-        var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
-        modal.find('.modal-body input').val(recipient)
-      })
-      */
     
     </script>
+
+  
 
 </body>
 </html>
