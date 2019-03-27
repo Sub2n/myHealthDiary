@@ -1,5 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Health Diary</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet"><!-- webfont -->
+    <link rel="stylesheet" href="style.css"><!-- 외부 스타일 불러오는 방법 -->
+    <link rel="stylesheet" href="main.css"><!-- 외부 스타일 불러오는 방법 -->
 
 <head>
   <meta charset="UTF-8" />
@@ -71,7 +80,39 @@
             <div class="workout_container col-sm-6">
                 <div class="workout_contain">
                   <button id="workout_title" class="btn btn-primary">운동 선택</button>
+
+                  <div id="userWorkout">
+                    <button id="myWorkoutButton" class="btn btn-primary">내 운동 등록</button>
+                  </div>
+
+                  <div id="selectOption">
+                    <div class="workPart input-group mb-3">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button">PART</button>
+                      </div>
+                      <select id="work_part" class="custom-select" aria-label="Example select with button addon">
+                        <option value="_">운동 부위</option>
+                        <option value="upper">상체</option>
+                        <option value="abs">복근</option>
+                        <option value="bottom">하체</option>
+                        <option value="full">전신</option>
+                      </select>
+  
+                      <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button">TYPE</button>
+                      </div>
+                      <select id="work_type" class="custom-select" aria-label="Example select with button addon">
+                        <option value="_">운동 종류</option>
+                        <option value="weight">근력</option>
+                        <option value="cardio">유산소</option>
+                        <option value="strech">스트레칭</option>
+                      </select>
+                    </div>
                   
+                    <div id="workout_list">
+                  
+                    </div>
+
                   </div>
                 </div>
             </div>
@@ -90,11 +131,59 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <div id="player"></div>
+                    <iframe id="player" width="450" height="315" src="//www.youtube.com/embed/YE7VzlLtp-4" frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                     <button id="saveHealthButton" type="button" class="btn btn-primary">운동 기록 저장</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- User 정의 운동 입력받는 pop up modal -->
+            <div class="modal fade" id="myWorkoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">내 운동 입력</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div id="myselectOption">
+                        <div class="workPart input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button">운동 이름</button>
+                          </div>
+                          <input id="myWorkout" type="text" class="form-control" placeholder="운동 이름" aria-label="Username" aria-describedby="basic-addon1">
+                          <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button">PART</button>
+                          </div>
+                          <select id="mywork_part" class="custom-select" aria-label="Example select with button addon">
+                            <option value="_">운동 부위</option>
+                            <option value="upper">상체</option>
+                            <option value="abs">복근</option>
+                            <option value="bottom">하체</option>
+                            <option value="full">전신</option>
+                          </select>
+      
+                          <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button">TYPE</button>
+                          </div>
+                          <select id="mywork_type" class="custom-select" aria-label="Example select with button addon">
+                            <option value="_">운동 종류</option>
+                            <option value="weight">근력</option>
+                            <option value="cardio">유산소</option>
+                            <option value="strech">스트레칭</option>
+                          </select>
+                        </div>
+                        
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                    <button id="saveMyWorkoutButton" type="button" class="btn btn-primary">내 운동 기록 저장</button>
                   </div>
                 </div>
               </div>
@@ -250,10 +339,6 @@ localStorage.setItem('date', date);
         
       }
       
-      //여기부터해야함
-      function saveWorkout(){
-        var info = {};
-      }
       function setWorkouts() {
         if(localStorage.getItem(workout_storageKey) == null){
           workouts["upper_weight_1"] = {"name": "강하나 상체 2018", "YT_id": "spdpIgmqt8U"}
@@ -315,7 +400,6 @@ localStorage.setItem('date', date);
           // key = upper_weight_1
           // value = name: "데일리전신", "YT"_id: "ddd", img="img/"+key+".jpg"
           var workout = workouts[key];
-          console.log(workout);
           $('#workout_list').append(
             '<div id="'+key+'" class="workout" data-id="'+key+'" data-toggle="modal" data-target="#popModal"><img src="img/'+key+'.jpg"><p>'+workout['name']+'</p></div>'
           );
@@ -338,7 +422,153 @@ localStorage.setItem('date', date);
           }
         }
       }
-     
+
+      //2019-03-27
+      //Subin
+      function showHealthDetail(key){
+
+        var workout = workouts[key];
+        var id = workout['YT_id'];
+        $('#saveHealthButton').attr('data-key',key);
+
+        var url = "//www.youtube.com/embed/"+id;
+
+        // Modal text를 바꿔주기
+       
+
+        // Modal 보여질 때마다 해당 youtube 보여주기 처리
+        $("#popModal").on('show.bs.modal', function(){
+          $("#player").attr('src', url);
+          $('#popTitle').text(workout['name']);
+        });
+        $("#popModal").on('hide.bs.modal', function(){
+          $("#player").attr('src', '');
+          $('#popTitle').text('');
+        });
+
+        // Modal show
+        $('#popModal').modal('show');
+        
+
+      }
+
+      //2019-03-27
+      //Subin
+      function saveWorkout(id){
+        // 오늘 날짜를 저장한다.
+        // 날짜를 받아와서 19-03-26 형식으로 만들어주는 코드
+        // localStorage key로 쓸거임
+        var today = new Date().toISOString().slice(2, 10);
+        var date_info = {};
+        var workout = workouts[id];
+        var workout_names = [];
+
+        var isExist = false; //일단 없다는 가정 하에 false로 해놓는데, 있으면 true로 바꿔준다.
+        for(var i in date){
+          if(date.indexOf(today) >= 0) {
+            //오늘 날짜가 등록되어 있으면 localStorage에서 불러온다.
+            date_info = JSON.parse(localStorage.getItem(today));
+            workout_names = date_info['workout'];
+            isExist = true;
+          }
+        }
+        if(isExist == false) {
+          //없으니까 내가 만들고 저장할 정보를 담는다.
+          workout_names.push(workout['name']);
+          date_info = {
+                        'food': {},
+                        'workout': [],
+                        'diary': {}
+                      };
+          date_info['workout'] = workout_names;
+          
+        } else { //있으면 아까 불러왔던 date_info에 내가 저장할 정보를 담는다.
+            var isNameExist = false; //없다고 가정
+            for(var i in workout_names){
+              if(workout_names[i].indexOf(workout['name']) >= 0){
+                //있으면
+                isNameExist = true; break;
+              }
+            }
+            if(isNameExist == false){
+              // 없으면 운동 이름 넣고 배열을 dictionary에 넣음
+              workout_names.push(workout['name']);
+              date_info['workout'] = workout_names;
+            }
+        }
+          // 로컬스토리지에 저장한다.
+          localStorage.setItem(today, JSON.stringify(date_info));
+
+          
+          date.push(today);
+          localStorage.setItem('date', JSON.stringify(date));
+
+          //showDiary
+          showDiary();
+      }
+
+      function showDiary(){
+        // diary page로 이동
+        window.location.href="diary.html";
+      }
+
+      function showMyHealthPop(){
+        // Moeal show
+        $('#myWorkoutModal').modal('show');
+      }
+
+      function saveMyWorkout(myname){
+        // 오늘 날짜를 저장한다.
+        // 날짜를 받아와서 19-03-26 형식으로 만들어주는 코드
+        // localStorage key로 쓸거임
+        var today = new Date().toISOString().slice(2, 10);
+        var date_info = {};
+        var workout_names = [];
+
+        var isExist = false; //일단 없다는 가정 하에 false로 해놓는데, 있으면 true로 바꿔준다.
+        for(var i in date){
+          if(date.indexOf(today) >= 0) {
+            //오늘 날짜가 등록되어 있으면 localStorage에서 불러온다.
+            date_info = JSON.parse(localStorage.getItem(today));
+            workout_names = date_info['workout'];
+            isExist = true;
+          }
+        }
+        if(isExist == false) {
+          //없으니까 내가 만들고 저장할 정보를 담는다.
+          workout_names.push(myname);
+          date_info = {
+                        'food': {},
+                        'workout': [],
+                        'diary': {}
+                      };
+          date_info['workout'] = workout_names;
+          
+        } else { //있으면 아까 불러왔던 date_info에 내가 저장할 정보를 담는다.
+            var isNameExist = false; //없다고 가정
+            for(var i in workout_names){
+              if(workout_names[i].indexOf(myname) >= 0){
+                //있으면
+                isNameExist = true; break;
+              }
+            }
+            if(isNameExist == false){
+              // 없으면 운동 이름 넣고 배열을 dictionary에 넣음
+              workout_names.push(myname);
+              date_info['workout'] = workout_names;
+            }
+        }
+          // 로컬스토리지에 저장한다.
+          localStorage.setItem(today, JSON.stringify(date_info));
+
+          
+          date.push(today);
+          localStorage.setItem('date', JSON.stringify(date));
+
+          //showDiary
+          showDiary();
+      }
+
       $(document).ready(function(){
         load();
         setWorkouts();
@@ -347,54 +577,27 @@ localStorage.setItem('date', date);
         $('div.workout').click(function(){
           //showWorkoutDetail
           var key = this.id;
-          var workout = workouts[key];
-          var id = workout['YT_id'];
-          $('#popModal').modal('show');
-          $('#popTitle').text(workout['name']);
-          console.log(id);
-          player = new YT.Player('player', {
-            height: '300',
-            width: '450',
-            videoId: id,
-            events: {
-              'onReady': onPlayerReady,
-              'onStateChange': onPlayerStateChange
-            }
-          }); 
+          showHealthDetail(key);
         });
         $('#saveHealthButton').click(function(){
-          saveWorkout();
+          var id = $(this).attr('data-key');
+          saveWorkout(id);
         });
+
+        $('#myWorkoutButton').click(function(){
+          showMyHealthPop();
+        });
+
+        $('#saveMyWorkoutButton').click(function(){
+          var name = $('#myWorkout').val();
+          console.log(name);
+          saveMyWorkout(name);
+        });
+
       });
-      //유튜브  
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        
-      }
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-                event.target.playVideo();
-              }
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 6000);
-          done = true;
-        }
-      }
-      function stopVideo() {
-        player.stopVideo();
-      }
+
+      
+
       /*
       $('#popModal').on('show.bs.modal', function (event) {
         var div = $(event.relatedTarget) // Button that triggered the modal
