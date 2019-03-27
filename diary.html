@@ -41,7 +41,7 @@
                     <div class="write_diary">
                         <textarea name="content" cols="100" rows="8" id="writeDiary"></textarea>
                     </div>  
-                    <div id="showDiary" style="border:1px solid black; width:100%; height:auto;">
+                    <div id="showDiary">
 
                     </div> 
                 </div>           
@@ -56,7 +56,7 @@
 
           </div>
           <div id="section">           
-            <!-- Modal -->
+            <!-- Modal 
             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -68,15 +68,17 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- //Modal -->
-            <!-- //Button trigger modal -->
-          </div>  
+            </div>
+          </div>  -->
         </div>
      
     </div>
 
 
     <script type="text/javascript">
+        $('#showDiary').hide();
+
+
         date_key = 'date';
         date = [];
         // 처음 시작할 때 리스트를 로드하는 함수.
@@ -110,6 +112,8 @@
             // "date-btn"이라는 클래스를 가진 버튼을 누르면
             $(document).on("click", ".date_btn", function(e) {
                 // 해당 버튼의 날짜 값을 가져와서
+
+
                 var text = $(this).attr("data-date");
                 // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
                 var data = JSON.parse(localStorage.getItem(text));
@@ -126,11 +130,14 @@
                 }
 
                 // 모달에 있던 내용을 한번 비워주고
-                $(".modal-diary-body").text("")
+                $("#showDiary").text("")
                 // 해당 내용으로 채운다.
-                $(".modal-diary-body").text(data.diary.content);
+                $("#showDiary").text(data.diary.content);
                 // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
-                $(".modal-diary-body").append('<i class="far ' + icon + '"></i>')
+                $("#showDiary").append('<i class="far ' + icon + '"></i>')
+
+                $('#writeDiary').hide();
+                $('#showDiary').show();
             })
 
 
