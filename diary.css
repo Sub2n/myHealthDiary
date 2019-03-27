@@ -81,10 +81,19 @@ div{
 }
 
 
+#showDiary{
+    width:100%;
+    height:auto;
+    padding:30px 15px;
+    border:1px solid #31aefd;
+}
+/*
 
 .modal-dialog{
     margin:5rem auto;
 }
+
+*/
 
 #diary_history_wrap{
     position: relative;
