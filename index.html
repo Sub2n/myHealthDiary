@@ -356,9 +356,11 @@
           // 로컬스토리지에 저장한다.
           localStorage.setItem(today, JSON.stringify(date_info));
 
+          if(isExist == false){
+            date.push(today);
+            localStorage.setItem('date', JSON.stringify(date));
+          }
           
-          date.push(today);
-          localStorage.setItem('date', JSON.stringify(date));
 
           //showDiary
           showDiary();
@@ -419,14 +421,16 @@
           localStorage.setItem(today, JSON.stringify(date_info));
 
           
-          date.push(today);
-          localStorage.setItem('date', JSON.stringify(date));
-
+          if(isExist == false){
+            date.push(today);
+            localStorage.setItem('date', JSON.stringify(date));
+          }
           //showDiary
           showDiary();
       }
 
       $(document).ready(function(){
+
         load();
         setWorkouts();
 
