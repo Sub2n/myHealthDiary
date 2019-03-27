@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet"><!-- webfont -->
     <link rel="stylesheet" href="diary.css"><!-- 외부 스타일 불러오는 방법 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
 </head>
 <body>
 
@@ -25,9 +27,19 @@
                     <label name="">식단</label>
                     <input type="text" id="" name="" value="">   
                 </div>
+
+                <!-- Workout 기록 반영
+                    19-03-27 15:52
+                    Subin 시작
+                -->
                 <div class="health_diary">
-                    <label name="">운동</label>
-                    <input type="text" id="" name="" value="">   
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">운동<img src="img/startup.png"></span>
+                        </div>
+                        <input id="workout_record" type="text" class="form-control" placeholder="운동리스트" aria-describedby="basic-addon1">
+                    </div>
+                          
                 </div>  
                 <div class="write_diary_wrap">
                     <div class="form-check-wrap">
@@ -44,11 +56,13 @@
                     </div>
                     
                     <div class="write_diary">
-                        <textarea name="content" cols="100" rows="8" id="writeDiary"></textarea>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="emotion"></span>
+                            </div>
+                            <input name="content" id="writeDiary" type="text" class="form-control" placeholder="나의 일기" aria-describedby="basic-addon1">
+                        </div>
                     </div>  
-                    <div id="showDiary">
-
-                    </div> 
                 </div>           
             </form>
         </div>
@@ -59,14 +73,12 @@
           <div id="section">           
 
           </div>
-        </div>
     </div>
 
 
+
     <script type="text/javascript">
-        $('#showDiary').hide();
-
-
+        
         date_key = 'date';
         date = [];
         // 처음 시작할 때 리스트를 로드하는 함수.
@@ -77,9 +89,24 @@
                 date = JSON.parse(localStorage.getItem(date_key));
             }
 
-            // 이미 있던 리스트들을 한번 없애준다.
-            $(".row").text("");
+            loadWorkout();
+            loadDiary();
+            
+        } // load 종료 
 
+        // 19-03-27 16:50
+        // Subin
+        function loadWorkout(){
+            
+        }
+
+        // section을 비워주고 새로 date를 받아와 section에 load
+        // setDiaryRecords를 부름
+        function loadDiary(){
+            // 이미 있던 리스트들을 한번 없애준다.
+            $("#section").text("");
+
+            // 날짜를 하단에 뿌려줌
             // 그 자료의 날짜를 한바퀴 돈다.
             for (var i in date) {
                 var icon;
@@ -96,11 +123,15 @@
                     "</div>"
                 );
             }
+            setDiaryRecords();
+        }
 
+        // 하단의 날짜 기록들( .date_btn) 클릭시 해당 내용을 일기장에 반영
+        function setDiaryRecords(){
+            // date-btn 누르면 showDiary에 내용 반영!
             // "date-btn"이라는 클래스를 가진 버튼을 누르면
             $(document).on("click", ".date_btn", function(e) {
                 // 해당 버튼의 날짜 값을 가져와서
-
 
                 var text = $(this).attr("data-date");
                 // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
@@ -118,55 +149,19 @@
                 }
 
                 // 모달에 있던 내용을 한번 비워주고
-                $("#showDiary").text("")
+                $("#writeDiary").val("")
                 // 해당 내용으로 채운다.
-                $("#showDiary").text(data.diary.content);
+                $("#writeDiary").val(data["diary"]["content"]);
+
                 // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
-                $("#showDiary").append('<i class="far ' + icon + '"></i>')
-
-                $('#writeDiary').hide();
-                $('#showDiary').show();
-            })
-
-
-            // date라는 클래스를 가진 요소를 클릭하면(하면상에서는 날짜를 클릭하면)
-            $(".date-box").click(function(e) {
-                e.preventDefault();
-                // 클릭된 해당 날짜 데이터 값을 읽어와 date 변수에 저장한나.
-                var date = $(this).attr("data-date");
-                // 해당 날짜의 콘텐츠와 감정을 요소에 담아
-                var data =
-                "<div class='date-textbox'>" + "<h2>일기 내역 보기</h2>" +
-                JSON.parse(localStorage.getItem(date))["diary"][
-                    "content"
-                ] +
-                "</div>";
-                // section이라는 id를 가진 박스를 한번 비워주고 데이터를 가진 요소를 추가한다.
-                $("#section").text("");
-                $("#section").append(data);
+                $("#emotion").html('<i class="far ' + icon + '"></i>');
+       
             });
-        } // load 종료 
+        }
 
-        $(document).ready(function(){
-            // 시작시 로컬스토리지 로드하는 함수 호출
-            load();
-
-            // 폼태그의 기본 submit 이벤트를 막는다.
-            $("form").submit(function(e) {
-                e.preventDefault();
-            });
-            // 중복체크를 막는 함수
-            $(".check-btn").change(function(e) {
-            $(".check-btn")[0].checked = false;
-            $(".check-btn")[1].checked = false;
-            $(".check-btn")[2].checked = false;
-            $(this)[0].checked = true;
-            });
-        
-
-        // 저장하면 로컬스토리지에 저장하고, 다시 로드한다.
-        $("#SaveButton").click(function(e) {
-        
+        // SaveButton 눌렸을 때
+        // diary 내용 저장하는 function
+        function saveDiary(){
             // 작성한 글 내용을 text변수에 저장한다.
             var text = $("#writeDiary").val();
 
@@ -176,8 +171,6 @@
             // 오늘 날짜를 저장한다.
             var today = new Date().toISOString().slice(2, 10);
             var isExist = false;  
-            today = '19-03-26';
-
 
             for(var i in date){
                 if(date.indexOf(today)>=0) {
@@ -202,7 +195,7 @@
                     }
             }
 
-         
+
 
             // 로컬스토리지에 저장한다.
             localStorage.setItem(today, JSON.stringify(date_info));
@@ -213,8 +206,42 @@
                 localStorage.setItem('date', JSON.stringify(date));
             }
 
-             load();
+            // input 속성을 readonly로 설정하는 코드
+            $('#writeDiary').prop("readonly", true);
 
+            /*
+                만약 readonly input 내용을 바꾸고 싶다면
+
+                $('#writeDiary').prop("readonly", false);
+                $('#writeDiary').val(바꾸고 싶은 값);
+                $('#writeDiary').prop("readonly", true);
+
+                > readonly인 상태에서 값이 바뀌고 다시 readonly된다.
+
+            */
+            loadDiary();
+        }
+
+        $(document).ready(function(){
+            // 시작시 로컬스토리지 로드하는 함수 호출
+            load();
+
+            // 폼태그의 기본 submit 이벤트를 막는다.
+            $("form").submit(function(e) {
+                e.preventDefault();
+            });
+            // 중복체크를 막는 함수
+            $(".check-btn").change(function(e) {
+                $(".check-btn")[0].checked = false;
+                $(".check-btn")[1].checked = false;
+                $(".check-btn")[2].checked = false;
+                $(this)[0].checked = true;
+            });
+
+            // 저장하면 로컬스토리지에 저장하고, 다시 로드한다.
+            $("#SaveButton").click(function(e) {
+                
+                saveDiary();
             }); // click event end 
         });
         

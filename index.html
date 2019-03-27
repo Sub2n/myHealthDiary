@@ -113,7 +113,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <iframe id="player" width="450" height="315" src="//www.youtube.com/embed/YE7VzlLtp-4" frameborder="0" allowfullscreen></iframe>
+                    <iframe id="player" width="450" height="315" src="" frameborder="0" allowfullscreen></iframe>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
@@ -173,7 +173,12 @@
         </div>
     </div>
 
+    <!-- 승현님 JavaScript -->
+    <script type="text/javascript">
+    
+    </script>
 
+    <!-- Subin JavaScript -->
     <script type="text/javascript">
       date_storageKey = 'date';
       storage_key = '';
@@ -356,9 +361,11 @@
           // 로컬스토리지에 저장한다.
           localStorage.setItem(today, JSON.stringify(date_info));
 
+          if(isExist == false){
+            date.push(today);
+            localStorage.setItem('date', JSON.stringify(date));
+          }
           
-          date.push(today);
-          localStorage.setItem('date', JSON.stringify(date));
 
           //showDiary
           showDiary();
@@ -419,9 +426,10 @@
           localStorage.setItem(today, JSON.stringify(date_info));
 
           
-          date.push(today);
-          localStorage.setItem('date', JSON.stringify(date));
-
+          if(isExist == false){
+            date.push(today);
+            localStorage.setItem('date', JSON.stringify(date));
+          }
           //showDiary
           showDiary();
       }
@@ -455,30 +463,10 @@
         });
 
       });
-
-      
-
-      /*
-      $('#popModal').on('show.bs.modal', function (event) {
-        var div = $(event.relatedTarget) // Button that triggered the modal
-        console.log(div);
-        var key = div.data('id') // Extract info from data-* attributes
-        console.log(key);
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-
-        var workout = workouts[key];
-        var id = workout['YT_id'];
-
-        
-
-        var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
-        modal.find('.modal-body input').val(recipient)
-      })
-      */
     
     </script>
+
+  
 
 </body>
 </html>
