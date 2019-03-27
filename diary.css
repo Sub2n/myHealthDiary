@@ -20,9 +20,38 @@ div{
 
 .margin_top_10{margin-top:10px;}
 
-#diary_content_wrap{
-    padding-top:50px;
+
+
+#diary_wrap{
+    position: relative;
+    width:100%;
+    height:500px;
+    border:2px solid red;
 }
+
+
+.prev-icon{
+    float: left;
+    width:10%;
+    border:2px solid green
+}
+#diary_content_wrap{
+    float: left;
+    width:80%;
+    padding-top:50px;
+    border:2px solid black;
+}
+.next-icon{
+    float: left;
+    width:10%;
+}
+.prev-icon img, .next-icon img{
+    position: absolute;
+    top:40%;
+    border:2px solid pink
+}
+.next-icon img{right:0}
+
 
 #diary_input{
     width:500px;
@@ -112,9 +141,34 @@ div{
 .date_btn:last-child{
     margin-right:0;
 }
-
-.carousel-control-prev-icon{
-    background-image:url();
-    border:2px solid red
+#diary_history_wrap::after{
+    clear: both;
+    display: block;
+    content: "";
 }
 
+.carousel-control-prev-icon, .carousel-control-next-icon{
+    width:37px;
+    height:71px;
+}
+
+.carousel-control-prev-icon{
+    background-image: url("img/prev-icon.png");
+}
+.carousel-control-next-icon{
+    background-image: url("img/next-icon.png");
+}
+.carousel-inner{
+    height:700px;
+}
+
+
+
+
+#footer{
+    clear: both;
+    padding:20px 0px;
+    color:#fff;
+    background: #060714;
+    border:2px solid black
+}
