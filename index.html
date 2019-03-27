@@ -238,6 +238,8 @@
       var url = "//www.youtube.com/embed/"+id;
 
       $('#popTitle').text(workout['name']);
+
+      // Modal 보여질 때마다 해당 youtube 보여주기!
       $("#popModal").on('show.bs.modal', function(){
        $("#player").attr('src', url);
       });
