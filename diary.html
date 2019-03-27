@@ -28,13 +28,13 @@
                     Subin 시작
                 -->
                 <div class="health_diary">
-                    <div class="input-group mb-3">
+                    <div id="workout_input" class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">운동<img src="img/startup.png"></span>
                         </div>
-                        <input id="workout_record" type="text" class="form-control" placeholder="운동리스트" aria-describedby="basic-addon1">
-                    </div>
-                          
+                        <textarea class="form-control" id="workout_record" placeholder="운동 리스트" required></textarea>
+
+                    </div>  
                 </div>  
                 <div class="write_diary_wrap">
                     <div class="form-check-wrap">
@@ -107,7 +107,23 @@
         // 19-03-27 16:50
         // Subin
         function loadWorkout(){
-            
+            //input 값 초기화, readonly
+            $('#workout_record').text('');
+            var key = new Date().toISOString().slice(2, 10);
+            var name_list = [];
+            var date_info = {};
+            var workout_list = "";
+            date_info = JSON.parse(localStorage.getItem(key));
+            name_list = date_info['workout'];
+
+            for(var i in name_list){
+                workout_list += name_list[i]+"\n";
+            }
+
+            console.log(workout_list);
+            $('#workout_record').prop('readonly', true);
+            $('#workout_record').text(workout_list);
+
         }
 
         // section을 비워주고 새로 date를 받아와 section에 load

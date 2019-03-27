@@ -80,8 +80,6 @@ div{
     border:1px solid #31aefd;
 }
 
-
-
 .modal-dialog{
     margin:5rem auto;
 }
@@ -105,4 +103,7 @@ div{
     margin-right:0;
 }
 
+#workout_input.input-group.mb-3 {
+    height: 200px;
+}
 
