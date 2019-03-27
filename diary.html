@@ -51,81 +51,123 @@
 
     <div id="diary_history_wrap">  <!-- diary_history_wrap -->      
         <div class="container">
-          <div class="row"></div>
+          <div class="row">
+
+
+          </div>
+          <div id="section">           
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body modal-diary-body">
+                            바디내용
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- //Modal -->
+            <!-- //Button trigger modal -->
+          </div>  
         </div>
-        <div id="section"></div>
+     
     </div>
 
 
     <script type="text/javascript">
+        date_key = 'date';
         date = [];
         // 처음 시작할 때 리스트를 로드하는 함수.
+        
         function load() {
-        //localStorage의 date를 불러옴
-        if(localStorage.getItem('date') != null){
-        date = JSON.parse(localStorage.getItem('date'));
-        }
-
-        // 이미 있던 리스트들을 한번 없애준다.
-        $(".row").text("");
-
-        // 그 자료의 날짜를 한바퀴 돈다.
-        for (var i in date) {
-            var icon;
-            var key = date[i];
-            var date_info = localStorage.getItem(key);
-            // 만약 해당 날짜의 감정이 good 이면 icon 은 fa-grin 이런식으로...
-            if (date_info["diary"]["emotion"] == "good") {
-            icon = "fa-grin";
-            } else if (date_info["diary"]["emotion"] == "normal") {
-            icon = "fa-flushed";
-            } else if (date_info["diary"]["emotion"] == "bad") {
-            icon = "fa-angly";
+            //localStorage의 date를 불러옴
+            if(localStorage.getItem(date_key) != null){
+                date = JSON.parse(localStorage.getItem(date_key));
             }
 
-            // row라는 클래스를 가진 div에 추가한다.
-            $(".row").append(
-            "<div class='date' data-date='" +
-                date +
-                "'>" +
-                date.replace("-", "년").replace("-", "월") +
-                "일" +
-                "</div>"
-            );
-        }
+            // 이미 있던 리스트들을 한번 없애준다.
+            $(".row").text("");
 
-        // date라는 클래스를 가진 요소를 클릭하면(하면상에서는 날짜를 클릭하면)
-        $(".date").click(function(e) {
-            // 클릭된 해당 날짜 데이터 값을 읽어와 date 변수에 저장한나.
-            var date = $(this).attr("data-date");
-            // 해당 날짜의 콘텐츠와 감정을 요소에 담아
-            var data =
-            "<div>" +
-            JSON.parse(localStorage.getItem(date))["diary"][
-                "content"
-            ] +
-            "</div>";
-            // section이라는 id를 가진 박스를 한번 비워주고 데이터를 가진 요소를 추가한다.
-            $("#section").text("");
-            $("#section").append(data);
-        });
-        }
+            // 그 자료의 날짜를 한바퀴 돈다.
+            for (var i in date) {
+                var icon;
+                var key = date[i];
+                var date_info = JSON.parse(localStorage.getItem(key));
+                $("#section").append(
+                    
+                    "<div data-toggle='modal' data-target='#exampleModalLong' class='date_btn' data-date='" +
+                        key +
+                        "'>" +
+
+                        key.replace("-", "년").replace("-", "월") +
+                        "일" +
+                    "</div>"
+                );
+            }
+
+            // "date-btn"이라는 클래스를 가진 버튼을 누르면
+            $(document).on("click", ".date_btn", function(e) {
+                // 해당 버튼의 날짜 값을 가져와서
+                var text = $(this).attr("data-date");
+                // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
+                var data = JSON.parse(localStorage.getItem(text));
+
+                
+                // 만약 해당 날짜의 감정이 good 이면 icon 은 fa-grin 이런식으로...
+                var icon
+                if (data["diary"]["emotion"] == "good") {
+                icon = "fa-grin";
+                } else if (data["diary"]["emotion"] == "normal") {
+                icon = "fa-flushed";
+                } else if (data["diary"]["emotion"] == "bad") {
+                icon = "fa-angly";
+                }
+
+                // 모달에 있던 내용을 한번 비워주고
+                $(".modal-diary-body").text("")
+                // 해당 내용으로 채운다.
+                $(".modal-diary-body").text(data.diary.content);
+                // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
+                $(".modal-diary-body").append('<i class="far ' + icon + '"></i>')
+            })
+
+
+            // date라는 클래스를 가진 요소를 클릭하면(하면상에서는 날짜를 클릭하면)
+            $(".date-box").click(function(e) {
+                e.preventDefault();
+                // 클릭된 해당 날짜 데이터 값을 읽어와 date 변수에 저장한나.
+                var date = $(this).attr("data-date");
+                // 해당 날짜의 콘텐츠와 감정을 요소에 담아
+                var data =
+                "<div class='date-textbox'>" + "<h2>일기 내역 보기</h2>" +
+                JSON.parse(localStorage.getItem(date))["diary"][
+                    "content"
+                ] +
+                "</div>";
+                // section이라는 id를 가진 박스를 한번 비워주고 데이터를 가진 요소를 추가한다.
+                $("#section").text("");
+                $("#section").append(data);
+            });
+        } // load 종료 
 
         $(document).ready(function(){
-        // 시작시 로컬스토리지 로드하는 함수 호출
-        load();
+            // 시작시 로컬스토리지 로드하는 함수 호출
+            load();
 
-        // 폼태그의 기본 submit 이벤트를 막는다.
-        $("form").submit(function(e) {
-        e.preventDefault();
-        });
-        // 중복체크를 막는 함수
-        $(".check-btn").change(function(e) {
-        $(".check-btn")[0].checked = false;
-        $(".check-btn")[1].checked = false;
-        $(".check-btn")[2].checked = false;
-        $(this)[0].checked = true;
-        });
+            // 폼태그의 기본 submit 이벤트를 막는다.
+            $("form").submit(function(e) {
+                e.preventDefault();
+            });
+            // 중복체크를 막는 함수
+            $(".check-btn").change(function(e) {
+            $(".check-btn")[0].checked = false;
+            $(".check-btn")[1].checked = false;
+            $(".check-btn")[2].checked = false;
+            $(this)[0].checked = true;
+            });
+        
 
         // 저장하면 로컬스토리지에 저장하고, 다시 로드한다.
         $("#SaveButton").click(function(e) {
@@ -133,32 +175,52 @@
             // 작성한 글 내용을 text변수에 저장한다.
             var text = $("#writeDiary").val();
 
-            // 체크된 input의 id가 무었인지 알아내서 emotion이라는 변수에 저장한다.
+            // 체크된 input의 id가 무엇인지 알아내서 emotion이라는 변수에 저장한다.
             var emotion = $(".check-btn:checked")[0].id;
 
             // 오늘 날짜를 저장한다.
             var today = new Date().toISOString().slice(2, 10);
+            var isExist = false;  
+            today = '19-03-26';
 
-            // TODO: 아래 텍스트 없애고 한줄 데이터 추가
 
-            // 오늘 날짜: {
-            //      diary: { content: text, emotion: emotion }
-            //    }
-            // 의 형태로 사전형(객체에 정의하고)
-            
-            var date_info = {
-                    'food': {},
-                    'workout': {},
-                    'diary': {'emotion':emotion, 'content':text}
-            };
-        
+            for(var i in date){
+                if(date.indexOf(today)>=0) {
+                    var date_info = JSON.parse(localStorage.getItem(today));
+                    isExist = true;
+                    //console.log('이미있다구..');
+                }
+            }
+
+            if(isExist == false) {
+                //없으니까 내가 만들고 저장할 정보를 담는다.
+                var date_info = {
+                                'food': {},
+                                'workout': [],
+                                'diary': {'emotion':emotion, 'content':text}
+                        };
+                
+            } else { //있으면 아까 불러왔던 date_info에 내가 저장할 정보를 담는다.
+                date_info['diary'] = {
+                        "emotion": emotion,
+                        "content": text,
+                    }
+            }
+
+         
+
             // 로컬스토리지에 저장한다.
             localStorage.setItem(today, JSON.stringify(date_info));
 
-            date.push(today);
-            localStorage.setItem('date', date);
+            if(isExist == false){
+                console.log('flag 동작안함');
+                date.push(today);
+                localStorage.setItem('date', JSON.stringify(date));
+            }
 
-            });
+             load();
+
+            }); // click event end 
         });
         
     </script>
