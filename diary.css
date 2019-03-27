@@ -3,14 +3,21 @@ body{
     font-size:15px;
 }
 .mian_title{font-size:60px;}
+
+
+.carousel-inner{
+    border:2px solid red
+}
+.carousel-item{
+    height:650px;
+    background: #fff;
+}
 div{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.container{
 
-}
 .margin_top_10{margin-top:10px;}
 
 #diary_content_wrap{
@@ -99,7 +106,6 @@ div{
 
 #diary_history_wrap{
     position: relative;
-    margin-top:100px;
     padding:50px 0px;
     background: #f1f1f1;
 }
@@ -116,4 +122,8 @@ div{
     margin-right:0;
 }
 
+.carousel-control-prev-icon{
+    background-image:url();
+    border:2px solid red
+}
 
