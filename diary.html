@@ -12,6 +12,19 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
+<!--
+    <div class="test">
+        <div id="video_wrap">
+
+                <iframe frameborder="0" height="100%" width="100%" src="https://www.youtube.com/embed/xpzMr3nSOIE?mute=1&loop=1&autoplay=1&rel=0&controls=0&showinfo=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                
+        </div>
+    </div>
+
+-->
+
+                
+      
     <div id="nav">
         <div class="container">
             <div class="row">
@@ -104,6 +117,7 @@
     </div>
 
 
+  
     <script type="text/javascript">
         
         date_key = 'date';
@@ -132,7 +146,7 @@
             if(date.indexOf(key) == -1){
                 // date에 오늘 날짜가 없다면
                 date_info = {
-                    'food' : {},
+                    'food' : [],
                     'workout' : [],
                     'diary' : {'emotion': "", 'content': ""}
                 }
@@ -192,14 +206,16 @@
             var icon;
             if (data["diary"]["emotion"] == "good") {
                 icon = "fa-grin";
+                
             } else if (data["diary"]["emotion"] == "normal") {
                 icon = "fa-flushed";              
+                
             } else if (data["diary"]["emotion"] == "bad") {
-                icon = "fa-angly";
+                icon = "fa-angry";                
             }
 
             // 모달에 있던 내용을 한번 비워주고
-            $("#writeDiary").val("")
+            $("#writeDiary").val("");
             // 해당 내용으로 채운다.
             $("#writeDiary").val(data["diary"]["content"]);
 
@@ -226,14 +242,13 @@
                 if(date.indexOf(today)>=0) {
                     var date_info = JSON.parse(localStorage.getItem(today));
                     isExist = true;
-                    //console.log('이미있다구..');
                 }
             }
 
             if(isExist == false) {
                 //없으니까 내가 만들고 저장할 정보를 담는다.
                 var date_info = {
-                                'food': {},
+                                'food': [],
                                 'workout': [],
                                 'diary': {'emotion':emotion, 'content':text}
                         };
@@ -244,7 +259,6 @@
                         "content": text,
                     }
             }
-
 
 
             // 로컬스토리지에 저장한다.
@@ -259,16 +273,6 @@
             // input 속성을 readonly로 설정하는 코드
             $('#writeDiary').prop("readonly", true);
 
-            /*
-                만약 readonly input 내용을 바꾸고 싶다면
-
-                $('#writeDiary').prop("readonly", false);
-                $('#writeDiary').val(바꾸고 싶은 값);
-                $('#writeDiary').prop("readonly", true);
-
-                > readonly인 상태에서 값이 바뀌고 다시 readonly된다.
-
-            */
             loadDiary();
         }
 
@@ -335,34 +339,7 @@
         $('.next-icon img').click(function(){
             alert("다음 일기 불러오기");
         });
-        /*
-        // 오늘 날짜를 저장한다.
-        var today = new Date().toISOString().slice(2, 10);
-            var isExist = false;  
-
-            for(var i in date){
-                if(date.indexOf(today)>=0) {
-                    var date_info = JSON.parse(localStorage.getItem(today));
-                    isExist = true;
-                    //console.log('이미있다구..');
-                }
-            }
-
-            if(isExist == false) {
-                //없으니까 내가 만들고 저장할 정보를 담는다.
-                var date_info = {
-                                'food': {},
-                                'workout': [],
-                                'diary': {'emotion':emotion, 'content':text}
-                        };
-                
-            } else { //있으면 아까 불러왔던 date_info에 내가 저장할 정보를 담는다.
-                date_info['diary'] = {
-                        "emotion": emotion,
-                        "content": text,
-                    }
-            }
-            */
+        
     </script>
 
 
