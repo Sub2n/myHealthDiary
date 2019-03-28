@@ -234,7 +234,7 @@
 
       date_storageKey = 'date';
       food_storageKey = 'foods';  // 모든 식단 list를 localStorage에 저장하는 key
-      foods = [];  // 모든 식단 list
+      foods = {};  // 모든 식단 list
       date = [];
 
       function loadFood() {
@@ -247,21 +247,21 @@
 
       function setFoods() {
 
-      if (localStorage.getItem(food_storageKey) == null) {
+        if (localStorage.getItem(food_storageKey) == null) {
 
-        foods["saladFood"] = { "name": "샐러드", "calorie": "400kcal" }
-        foods["dietFood"] = { "name": "다이어트식", "calorie": "600kcal" }
-        foods["proteinFood"] = { "name": "고단백식", "calorie": "750kcal" }
-        foods["healthyFood"] = { "name": "건강식", "calorie": "900kcal" }
+            foods["saladFood"] = { "name": "샐러드", "calorie": "400kcal" };
+            foods["dietFood"] = { "name": "다이어트식", "calorie": "600kcal" };
+            foods["proteinFood"] = { "name": "고단백식", "calorie": "750kcal" };
+            foods["healthyFood"] = { "name": "건강식", "calorie": "900kcal" };
 
-        localStorage.setItem(food_storageKey, JSON.stringify(foods));
-        console.log('foods setting complete');
-      } else {
-        //이미 foods가 있으면
-        foods = JSON.parse(localStorage.getItem(food_storageKey));
-        console.log('foods is already exist');
-      }
-      //drawFoodList();
+            localStorage.setItem(food_storageKey, JSON.stringify(foods));
+            console.log('foods setting complete');
+        } else {
+          //이미 foods가 있으면
+          foods = JSON.parse(localStorage.getItem(food_storageKey));
+          console.log('foods is already exist');
+        }
+        //drawFoodList();
     }
 
       function saveFood(key) {
@@ -394,10 +394,6 @@
           var name = $('#myFood').val();
           var type = $('#myFood_part option:selected').text();
           var calorie = $('#myFood_type option:selected').text();
-
-          console.log(name);
-          console.log(type);
-          console.log(calorie);
 
           saveMyFood(name, type, calorie);
         });
