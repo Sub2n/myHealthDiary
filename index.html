@@ -11,7 +11,8 @@
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
   <!-- webfont -->
   <link rel="stylesheet" href="style.css"><!-- 외부 스타일 불러오는 방법 -->
-  <link rel="stylesheet" href="main.css"><!-- 외부 스타일 불러오는 방법 -->
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="diary.css"><!-- 외부 스타일 불러오는 방법 -->
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -26,6 +27,14 @@
 </head>
 
 <body>
+  <div id="nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">HealthDiary</div>
+                <div class="col-sm-10"></div>
+            </div>
+        </div>
+  </div>
   <video autoplay muted loop id="myVideo">
     <source src="img/jump.mp4" type="video/mp4">
   </video>
@@ -237,6 +246,21 @@
     </div>
     
 
+    </div>
+    <div id="footer" class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <p>mida Lee <a href="#"><img src="img/git_logo.png" alt=""></a> E-mail : midahihi@gmial.com</p>
+                    <p>mida Lee <a href="#"><img src="img/git_logo.png" alt=""></a> E-mail : midahihi@gmial.com</p>
+                    <p>mida Lee <a href="#"><img src="img/git_logo.png" alt=""></a> E-mail : midahihi@gmial.com</p>
+                </div>
+                <div class="col-sm-7">
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
+    </div> 
     <!-- 승현님 JavaScript -->
     <script type="text/javascript">
 
@@ -281,7 +305,7 @@
         var selected_food = foods[key]; //사용자가 선택한 음식
         var food_info = []; //localStorage에 사용자가 저장한 food 배열을 담을거임
         recent_food = {}; //사용자가 선택한 음식 정보를 담을 객체
-        
+
         var isExist = false; //일단 today가 date에 없다는 가정 하에 false로 해놓는데, 있으면 true로 바꿔준다.
         for (var i in date) {
           if (date.indexOf(today) >= 0) {
