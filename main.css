@@ -95,6 +95,10 @@ div#selectOption {
     margin: 15px;
 }
 
+div#selectOption2 {
+    margin: 15px;
+}
+
 #selectOption button {
     pointer-events: none; 
     background: black;
@@ -102,16 +106,6 @@ div#selectOption {
     color: #fff;
 }
 
-div#selectOption2 {
-    margin: 15px;
-}
-
-#selectOption2 button {
-    pointer-events: none; 
-    background: black;
-    border-color: black;
-    color: #fff;
-}
 
 button#selectFoodOption {
     pointer-events: none; 
