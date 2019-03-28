@@ -1,3 +1,8 @@
+
+.logo{
+    font-family: 'Baloo Chettan', cursive;
+    color:#fff;
+}
 div.main_contain {
     padding:70px 0px;
     text-align: center;
@@ -5,63 +10,74 @@ div.main_contain {
 
 h2.main_title {
     margin: 2%;
+    color:#fff;
+    font-size:120px;
+    opacity: 0.5;;
+    text-shadow: 4px 2px 2px #333;
+    font-weight: 600;
+    font-family: 'Baloo Chettan', cursive;
 }
 
-
 button#diary_button {
-    margin: 1rem auto;
+    margin: 2rem auto 0;
     width: 10rem;
-    background: white;
-    border-color: white;
-    color: black;
+    background: #fff;
+    border:1px solid #fff;
+    color: #000;
     height: 50px;
     line-height: 50px;
     padding: 0;
+    border-radius: 0;
 }
-
+button#diary_button:hover{
+    color:#fff;
+    background: #000;
+    border:1px solid #000;
+}
 button#workout_title {
     width: 100%;
     pointer-events: none;
-    background: black;
-    border-color: black;
-    height: 50px;
-    line-height: 50px;
+    background: #000;
+    border-color: #000;
+    height: 80px;
+    line-height: 80px;
     padding: 0;
+    border-radius: 0;
 }
 
 button#food_title {
     width: 100%;
     pointer-events: none;
-    background: black;
-    border-color: black;
-    height: 50px;
-    line-height: 50px;
+    background: #000;
+    border-color: #000;
+    height: 80px;
+    line-height: 80px;
     padding: 0;
-   
+    border-radius: 0;
 }
 
 button#myWorkoutButton {
     width: 525px;
     background: #fff;
-    border: 2px solid;
-    border-color: black;
-    color: black;
-    height: 50px;
-    line-height: 50px;
+    border: 2px solid #000;
+    color: #000;
+    height: 60px;
+    line-height: 60px;
     padding: 0;
     margin: 15px;
+    border-radius: 0;
 }
 
 button#myFoodButton {
     width: 525px;
     background: #fff;
-    border: 2px solid;
-    border-color: black;
-    color: black;
-    height: 50px;
-    line-height: 50px;
+    border: 2px solid #000;
+    color: #000;
+    height: 60px;
+    line-height: 60px;
     padding: 0;
     margin: 15px;
+    border-radius: 0;
 }
 
 
@@ -69,7 +85,8 @@ button#myFoodButton {
     width: 555px;
     float: left;
     height: 100%;
-    border-radius: .25rem;
+    padding-bottom: 30px;
+    border-radius: 0; 
     background-image: url("img/background.png");
 }
 
@@ -77,7 +94,7 @@ button#myFoodButton {
     width: 555px;
     float: right;
     height: 100%;
-    border-radius: .25rem;
+    border-radius: 0;
     background-image: url("img/background.png");
 
 }
@@ -101,18 +118,19 @@ div#selectOption2 {
 
 #selectOption button {
     pointer-events: none; 
-    background: black;
-    border-color: black;
+    background:#000;
+    border-color: #000;
     color: #fff;
+    border-radius: 0;
 }
 
 
 button#selectFoodOption {
     pointer-events: none; 
-    background: black;
-    border-color: black;
+    background: #000;
+    border-color: #000;
     color: #fff;
-    width: 8rem;
+    border-radius: 0;
 }
 
 button#saveFoodButton {
@@ -128,16 +146,33 @@ button#saveFoodButton {
 
 #myselectOption button {
     pointer-events: none; 
-    background: black;
-    border-color: black;
+    background: #000;
+    border-color:#000;
     color: #fff;
 }
 
 #myselectOption input { 
-    border-color: black;
+    border-color:#000;
     height: 100%;
 }
 
+#myselectOption2 button {
+    pointer-events: none; 
+    background: #000;
+    border-color:#000;
+    color: #fff;
+}
+
+#myselectOption2 input { 
+    border-color:#000;
+    height: 100%;
+}
+#saveFoodButton{
+    padding:10px 35px;
+    background: #000;
+    border:1px solid #000;
+    border-radius: 0;
+}
 div.mb-3 {
     width: 100%;
     height: 50px;
@@ -159,9 +194,6 @@ div.workout {
     height: 100px;
 }
 
-#myWorkoutModal {
-    width: 800px;
-}
 
 .modal-dialog {
     max-width: 800px;
@@ -179,4 +211,24 @@ div.workout {
 .finedust{padding-top:50px;}
 h2.main_title {
     z-index: 200;
+}
+.input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child){
+    border-radius: 0;
+}
+
+a.logo {
+    pointer-events: none;
+}
+
+.modal .btn-primary {
+    background: #000;
+    border:1px solid #000;
+    border-radius: 0;
+}
+
+.modal .btn-secondary {
+    background: #fff;
+    border:1px solid #000;
+    color: black;
+    border-radius: 0;
 }

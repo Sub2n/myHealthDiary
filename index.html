@@ -25,16 +25,16 @@
     crossorigin="anonymous"></script>
 
 
-    
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
   <div id="nav">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2">HealthDiary</div>
-                <div class="col-sm-10"></div>
+                <div class="col-sm-6">
+                    <a href="index.html" class="logo">My Health Diary</a>
+                </div>
+                <div class="col-sm-6"></div>
             </div>
         </div>
   </div>
@@ -42,7 +42,7 @@
     <source src="img/jump.mp4" type="video/mp4">
   </video>
   <div class="container">
-      
+
     <!-- Content 1170px -->
     <div class="finedust">
       <h2 class="main_title text-center"><span>HealthDiary</span></h2>
@@ -85,18 +85,18 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">내 식단 입력</h5>
+              <h5 class="modal-title">SAVE MY DIET</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <div id="myselectOption">
+              <div id="myselectOption2">
                 <div class="foodPart input-group mb-3">
                   <div class="input-group-prepend">
                     <button class="btn btn-outline-secondary" type="button">DIET</button>
                   </div>
-                  <input id="myFood" type="text" class="form-control" placeholder="식단 이름" aria-label="Username"
+                  <input id="myFood" type="text" class="form-control" placeholder="NAME" aria-label="Username"
                     aria-describedby="basic-addon1">
                   <div class="input-group-prepend">
                     <button class="btn btn-outline-secondary" type="button">TYPE</button>
@@ -186,12 +186,12 @@
               </button>
             </div>
             <div class="modal-body">
-              <iframe id="player" width="450" height="315" src="//www.youtube.com/embed/YE7VzlLtp-4" frameborder="0"
+              <iframe id="player" width="450" height="315" src="" frameborder="0"
                 allowfullscreen></iframe>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-              <button id="saveHealthButton" type="button" class="btn btn-primary">운동 기록 저장</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+              <button id="saveHealthButton" type="button" class="btn btn-primary">SAVE</button>
             </div>
           </div>
         </div>
@@ -203,7 +203,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">내 운동 입력</h5>
+              <h5 class="modal-title">SAVE MY WORKOUT</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -212,15 +212,15 @@
               <div id="myselectOption">
                 <div class="workPart input-group mb-3">
                   <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary" type="button">운동 이름</button>
+                    <button class="btn btn-outline-secondary" type="button">NAME</button>
                   </div>
-                  <input id="myWorkout" type="text" class="form-control" placeholder="운동 이름" aria-label="Username"
+                  <input id="myWorkout" type="text" class="form-control" placeholder="NAME" aria-label="Username"
                     aria-describedby="basic-addon1">
                   <div class="input-group-prepend">
                     <button class="btn btn-outline-secondary" type="button">PART</button>
                   </div>
                   <select id="mywork_part" class="custom-select" aria-label="Example select with button addon">
-                    <option value="_">운동 부위</option>
+                    <option value="_">SELECT</option>
                     <option value="upper">상체</option>
                     <option value="abs">복근</option>
                     <option value="bottom">하체</option>
@@ -231,7 +231,7 @@
                     <button class="btn btn-outline-secondary" type="button">TYPE</button>
                   </div>
                   <select id="mywork_type" class="custom-select" aria-label="Example select with button addon">
-                    <option value="_">운동 종류</option>
+                    <option value="_">SELECT</option>
                     <option value="weight">근력</option>
                     <option value="cardio">유산소</option>
                     <option value="strech">스트레칭</option>
@@ -240,8 +240,8 @@
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                <button id="saveMyWorkoutButton" type="button" class="btn btn-primary">내 운동 기록 저장</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                <button id="saveMyWorkoutButton" type="button" class="btn btn-primary">SAVE</button>
               </div>
             </div>
           </div>
@@ -254,13 +254,16 @@
     <div id="footer" class="container-fluid">
         <div class="container">
             <div class="row">
-                <div class="col-sm-5">
-                    <p>mida Lee <a href="#"><img src="img/git_logo.png" alt=""></a> E-mail : midahihi@gmial.com</p>
-                    <p>mida Lee <a href="#"><img src="img/git_logo.png" alt=""></a> E-mail : midahihi@gmial.com</p>
-                    <p>mida Lee <a href="#"><img src="img/git_logo.png" alt=""></a> E-mail : midahihi@gmial.com</p>
-                </div>
-                <div class="col-sm-7">
-                    <h2></h2>
+               <div class="col-sm-2">
+                    <p>Mida Lee <a href="https://github.com/midalee"><br><img src="img/git_logo.png" alt=""></a><a href="https://www.instagram.com/_mida0828/"><img src="img/instagram_icon.png" alt=""></a><a href=""></a><img src="img/facebook_icon.png" alt=""></a> </p>
+                </div>      
+                <div class="col-sm-2">
+                    <p>Subin Park <a href="https://github.com/Sub2n"><br><img src="img/git_logo.png" alt=""></a><a href="https://www.instagram.com/sub2ns/"><img src="img/instagram_icon.png" alt=""></a><img src="img/facebook_icon.png" alt=""></a> </p>
+                </div>  
+                <div class="col-sm-2">
+                    <p>SungHyun Kim <a href="https://github.com/SeungHyunKim85"><br><img src="img/git_logo.png" alt=""></a><a href=""><img src="img/instagram_icon.png" alt=""></a><img src="img/facebook_icon.png" alt=""></a></p>
+                </div>      
+                <div class="col-sm-6"></div>  
                 </div>
             </div>
         </div>
@@ -719,6 +722,8 @@
           console.log(name);
           saveMyWorkout(name);
         });
+
+        $('#diary_button').click(showDiary);
 
       });
 
