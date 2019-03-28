@@ -11,8 +11,9 @@ h2.main_title {
 button#diary_button {
     margin: 1rem auto;
     width: 10rem;
-    background: #31aefd;
-    border-color: #31aefd;
+    background: white;
+    border-color: white;
+    color: black;
     height: 50px;
     line-height: 50px;
     padding: 0;
@@ -21,8 +22,8 @@ button#diary_button {
 button#workout_title {
     width: 100%;
     pointer-events: none;
-    background: #31aefd;
-    border-color: #31aefd;
+    background: black;
+    border-color: black;
     height: 50px;
     line-height: 50px;
     padding: 0;
@@ -31,8 +32,8 @@ button#workout_title {
 button#food_title {
     width: 100%;
     pointer-events: none;
-    background: #31aefd;
-    border-color: #31aefd;
+    background: black;
+    border-color: black;
     height: 50px;
     line-height: 50px;
     padding: 0;
@@ -43,8 +44,8 @@ button#myWorkoutButton {
     width: 525px;
     background: #fff;
     border: 2px solid;
-    border-color: #31aefd;
-    color: #31aefd;
+    border-color: black;
+    color: black;
     height: 50px;
     line-height: 50px;
     padding: 0;
@@ -55,8 +56,8 @@ button#myFoodButton {
     width: 525px;
     background: #fff;
     border: 2px solid;
-    border-color: #31aefd;
-    color: #31aefd;
+    border-color: black;
+    color: black;
     height: 50px;
     line-height: 50px;
     padding: 0;
@@ -66,16 +67,18 @@ button#myFoodButton {
 
 .food_contain {
     width: 555px;
-    background: #f8f8f8;
     float: left;
     height: 100%;
+    border-radius: .25rem;
+    background-image: url("img/background.png");
 }
 
 .workout_contain {
     width: 555px;
-    background: #f8f8f8;
     float: right;
     height: 100%;
+    border-radius: .25rem;
+    background-image: url("img/background.png");
 
 }
 
@@ -94,27 +97,39 @@ div#selectOption {
 
 #selectOption button {
     pointer-events: none; 
-    background: #31aefd;
-    border-color: #31aefd;
+    background: black;
+    border-color: black;
+    color: #fff;
+}
+
+div#selectOption2 {
+    margin: 15px;
+}
+
+#selectOption2 button {
+    pointer-events: none; 
+    background: black;
+    border-color: black;
     color: #fff;
 }
 
 button#selectFoodOption {
     pointer-events: none; 
-    background: #31aefd;
-    border-color: #31aefd;
+    background: black;
+    border-color: black;
     color: #fff;
 }
 
+
 #myselectOption button {
     pointer-events: none; 
-    background: #31aefd;
-    border-color: #31aefd;
+    background: black;
+    border-color: black;
     color: #fff;
 }
 
 #myselectOption input { 
-    border-color: #31aefd;
+    border-color: black;
     height: 100%;
 }
 
@@ -146,4 +161,17 @@ div.workout {
 .modal-dialog {
     max-width: 800px;
     margin: 0 auto;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -10;
+}
+
+h2.main_title {
+    z-index: 200;
 }
