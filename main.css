@@ -112,8 +112,19 @@ button#selectFoodOption {
     background: black;
     border-color: black;
     color: #fff;
+    width: 8rem;
 }
 
+button#saveFoodButton {
+    margin: 1rem auto;
+    width: 10rem;
+    background: black;
+    border-color: black;
+    color: white;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+}
 
 #myselectOption button {
     pointer-events: none; 

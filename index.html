@@ -24,6 +24,9 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
+
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -42,7 +45,7 @@
       
     <!-- Content 1170px -->
     <div class="finedust">
-      <h2 class="main_title text-center"><span>오늘의 미세먼지</span></h2>
+      <h2 class="main_title text-center"><span>HealthDiary</span></h2>
       <!-- 부트스트랩 기본 class중에 text-center 라는 클래스명은 자동으로 text-center 됨.-->
     </div>
     <div class="main_contain row">
@@ -51,19 +54,19 @@
         
         <div class="food_contain">
 
-          <button id="food_title" class="btn btn-primary">식단 입력</button>
+          <button id="food_title" class="btn btn-primary">DIET</button>
           <div id="userFood">
 
-            <button id="myFoodButton" class="btn btn-primary">내 식단 등록</button>
+            <button id="myFoodButton" class="btn btn-primary">MY MEAL</button>
           </div>
 
           <div id="selectOption2">
           <div class="foodPart input-group mb-3">
             <div class="input-group-prepend">
-              <button class="btn btn-outline-secondary" id="selectFoodOption" type="button">식단</button>
+              <button class="btn btn-outline-secondary" id="selectFoodOption" type="button">DIET</button>
             </div>
             <select id="food_part" class="custom-select" aria-label="Example select with button addon">
-              <option value="_">식단</option>
+              <option value="_">SELECT</option>
               <option value="saladFood">샐러드 400kcal</option>
               <option value="dietFood">다이어트식 600kcal</option>
               <option value="proteinFood">고단백식 750kcal</option>
@@ -71,7 +74,7 @@
             </select>
           </div>
         </div>
-          <button id="saveFoodButton" type="button" class="btn btn-primary">저장</button>
+          <button id="saveFoodButton" type="button" class="btn">SAVE</button>
         </div>
         
       </div>
@@ -91,15 +94,15 @@
               <div id="myselectOption">
                 <div class="foodPart input-group mb-3">
                   <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary" type="button">식단 이름</button>
+                    <button class="btn btn-outline-secondary" type="button">DIET</button>
                   </div>
                   <input id="myFood" type="text" class="form-control" placeholder="식단 이름" aria-label="Username"
                     aria-describedby="basic-addon1">
                   <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary" type="button">종류</button>
+                    <button class="btn btn-outline-secondary" type="button">TYPE</button>
                   </div>
                   <select id="myFood_part" class="custom-select" aria-label="Example select with button addon">
-                    <option value="_">식단 종류</option>
+                    <option value="_">SELECT</option>
                     <option value="saladFood">샐러드</option>
                     <option value="dietFood">다이어트식</option>
                     <option value="proteinFood">고단백식</option>
@@ -107,10 +110,10 @@
                   </select>
 
                   <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary" type="button">칼로리</button>
+                    <button class="btn btn-outline-secondary" type="button">CALORIE</button>
                   </div>
                   <select id="myFood_type" class="custom-select" aria-label="Example select with button addon">
-                    <option value="_">칼로리</option>
+                    <option value="_">SELECT</option>
                     <option value="fourH">400</option>
                     <option value="sixH">600</option>
                     <option value="sevenH">750</option>
@@ -120,8 +123,8 @@
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
-                <button id="saveMyFoodButton" type="button" class="btn btn-primary">내 식단 기록 저장</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">CALCEL</button>
+                <button id="saveMyFoodButton" type="button" class="btn btn-primary">SAVE</button>
               </div>
             </div>
           </div>
@@ -130,10 +133,10 @@
       <!-- 부트스트랩은 12개로 나뉘어져서 2개로 자동 넓이 조정하려면 col-sm-6 , 3개의 레이아웃이 나오고 싶으면 col-sm-4 x3 해서 총 12개로 만든다. div class=row는 12개 나눌때 감싸져야 하는 div -->
       <div class="workout_container col-sm-6">
         <div class="workout_contain">
-          <button id="workout_title" class="btn btn-primary">운동 선택</button>
+          <button id="workout_title" class="btn btn-primary">WORKOUT</button>
 
           <div id="userWorkout">
-            <button id="myWorkoutButton" class="btn btn-primary">내 운동 등록</button>
+            <button id="myWorkoutButton" class="btn btn-primary">MY WORKOUT</button>
           </div>
 
           <div id="selectOption">
@@ -142,7 +145,7 @@
                 <button class="btn btn-outline-secondary" type="button">PART</button>
               </div>
               <select id="work_part" class="custom-select" aria-label="Example select with button addon">
-                <option value="_">운동 부위</option>
+                <option value="_">SELECT</option>
                 <option value="upper">상체</option>
                 <option value="abs">복근</option>
                 <option value="bottom">하체</option>
@@ -153,7 +156,7 @@
                 <button class="btn btn-outline-secondary" type="button">TYPE</button>
               </div>
               <select id="work_type" class="custom-select" aria-label="Example select with button addon">
-                <option value="_">운동 종류</option>
+                <option value="_">SELECT</option>
                 <option value="weight">근력</option>
                 <option value="cardio">유산소</option>
                 <option value="strech">스트레칭</option>
@@ -167,7 +170,7 @@
           </div>
         </div>
       </div>
-      <button id="diary_button" type="button" class="btn btn-primary">내 일기</button>
+      <button id="diary_button" type="button" class="btn btn-primary">DIARY</button>
       
 
       <!-- Modal -->
@@ -436,7 +439,7 @@
 
     <!-- Subin JavaScript -->
     <script type="text/javascript">
- 
+    
       date_storageKey = 'date';
       workout_storageKey = 'workouts';  // 모든 운동 list를 localStorage에 저장하는 key
       workouts = {};                    // 모든 운동 list
