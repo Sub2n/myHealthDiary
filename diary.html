@@ -32,8 +32,13 @@
             <div id="diary_input">
                 <form class="form" action="#">
                     <div class="food_diary">
-                        <label name="">식단</label>
-                        <input type="text" id="" name="" value="">   
+                        <div id="food_input" class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon2">식단<img src="img/startup.png"></span>
+                            </div>
+                            <textarea class="form-control" id="food_record" placeholder="식단 리스트" required></textarea>
+    
+                        </div>    
                     </div>
     
                     <!-- Workout 기록 반영
@@ -118,10 +123,38 @@
                 date = JSON.parse(localStorage.getItem(date_key));
             }
 
+            loadFood();
             loadWorkout();
             loadDiary();
             
         } // load 종료 
+
+        function loadFood() {
+            $('#food_record').text('');
+            var key = new Date().toISOString().slice(2, 10);
+            var date_info = {};
+            var food_info = [];
+            if(date.indexOf(key) == -1){
+                // 오늘 날짜가 등록되어있지 않으면
+                date_info = {
+                    'food' : [],
+                    'workout' : [],
+                    'diary' : {'emotion': "", 'content': ""}
+                }
+                food_info = date_info['food'];
+            } else{
+                date_info = JSON.parse(localStorage.getItem(key));
+                food_info = date_info['food'];                
+            }
+             var food_list = "";
+             for(var i in food_info){
+                var food = food_info[i]; //object food {name: , type: , calorie: }
+                food_list += food['name'] + " "+ food['type'] + " " + food['calorie'] + "\n";
+             }
+             $('#food_record').prop('readonly', true);
+             $('#food_record').text(food_list);
+
+        }
 
         // 19-03-27 16:50
         // Subin
@@ -291,9 +324,28 @@
                 workout_list += name_list[i]+"\n";
             }
 
-            console.log(workout_list);
+
             $('#workout_record').prop('readonly', true);
             $('#workout_record').text(workout_list);
+
+        }
+
+        function setFoodRecords(btn){
+             // 해당 버튼의 날짜 값을 가져와서
+             var key = $(btn).attr("data-date");
+
+             // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
+            var date_info = JSON.parse(localStorage.getItem(key));
+
+            var food_info = date_info['food'];
+            var food_list = "";
+             for(var i in food_info){
+                var food = food_info[i]; //object food {name: , type: , calorie: }
+                food_list += food['name'] + " "+ food['type'] + " " + food['calorie'] + "\n";
+             }
+             $('#food_record').prop('readonly', true);
+             $('#food_record').text(food_list);
+
 
         }
 
@@ -305,6 +357,7 @@
             // "date-btn"이라는 클래스를 가진 버튼을 누르면
             $(document).on("click", ".date_btn", function(e) {
                 var btn = this;
+                setFoodRecords(btn);
                 setWorkoutRecords(btn);
                 setDiaryRecords(btn)
             });
