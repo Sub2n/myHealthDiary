@@ -117,7 +117,7 @@
             if(localStorage.getItem(date_key) != null){
                 date = JSON.parse(localStorage.getItem(date_key));
             }
-
+            
             loadWorkout();
             loadDiary();
             
@@ -134,7 +134,7 @@
             if(date.indexOf(key) == -1){
                 // date에 오늘 날짜가 없다면
                 date_info = {
-                    'food' : {},
+                    'food' : [],
                     'workout' : [],
                     'diary' : {'emotion': "", 'content': ""}
                 }
