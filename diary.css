@@ -1,9 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan');
+
 body{
     font-family: 'Nanum Gothic', sans-serif;
     font-size:15px;
 
 }
-h2.main_title{font-size:60px; font-weight: 600}
+h2.main_title{
+    margin: 2%;
+    color:#fff;
+    font-size:120px;
+    opacity: 0.5;;
+    text-shadow: 4px 2px 2px #333;
+    font-weight: 600;
+    font-family: 'Baloo Chettan', cursive;
+}
 
 
 
@@ -169,13 +179,13 @@ div{
     color:#fff;
     background: #000;
 }
-#footer .col-sm-5 p{
+#footer .col-sm-2 p{
     font-size:15px;
 }
-#footer .col-sm-5 p b{
+#footer .col-sm-2 p b{
     font-size:17px;
 }
-#footer .col-sm-5 img{
+#footer .col-sm-2 img{
     width:30px;
     padding:0px 5px;
 }
