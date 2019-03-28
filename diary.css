@@ -169,13 +169,13 @@ div{
     color:#fff;
     background: #000;
 }
-#footer .col-sm-5 p{
+#footer .col-sm-2 p{
     font-size:15px;
 }
-#footer .col-sm-5 p b{
+#footer .col-sm-2 p b{
     font-size:17px;
 }
-#footer .col-sm-5 img{
+#footer .col-sm-2 img{
     width:30px;
     padding:0px 5px;
 }
