@@ -1,6 +1,6 @@
 div.main_contain {
+    padding:70px 0px;
     text-align: center;
-    height: 600px;
 }
 
 h2.main_title {
@@ -165,7 +165,7 @@ div.workout {
     min-height: 100%;
     z-index: -10;
 }
-
+.finedust{padding-top:50px;}
 h2.main_title {
     z-index: 200;
 }

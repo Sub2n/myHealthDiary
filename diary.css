@@ -3,7 +3,7 @@ body{
     font-size:15px;
 
 }
-.mian_title{font-size:60px; color:#fff;}
+h2.main_title{font-size:60px; font-weight: 600}
 
 
 
@@ -95,7 +95,7 @@ div{
     width:70px;
     padding:0;
     font-size:26px;
-    color:#31aefd;
+    color:#000;
 }
 .write_diary_wrap .form-check i{margin-left:8px;}
 #diary_input .write_diary_wrap .write_diary_save{
@@ -104,13 +104,17 @@ div{
     height:50px;
     line-height: 50px;
     color:#fff;
-    background: #31aefd;
-    border:1px solid #31aefd;
+    background: #000;
+    border:1px solid #000;
+}
+#diary_input .write_diary_wrap .write_diary_save:hover{
+    background: #fff;
+    color:#000
 }
 #diary_input .write_diary{margin-top:10px;}
 #diary_input .write_diary textarea{
     width:100%;
-    border:1px solid #31aefd;
+    border:1px solid #000;
 }
 
 .modal-dialog{
@@ -141,32 +145,37 @@ div{
 }
 
 
-#workout_input.input-group.mb-3 {
-    height: 150px;
+#workout_input.input-group.mb-3, #food_input.input-group.mb-3 {
+    height: 100px;
 }
-
-#food_input.input-group.mb-3 {
-    height: 150px;
+.input-group-text{
+    width:100px;
+    padding:10px;
+    text-align: center;
+    background: #fff;
+    border-radius: 0;
+}
+#diary_input .form-control{
+    padding:20px 10px;
+    background: #fff;
+    border-radius: 0;
 }
 
 
 #footer{
     clear: both;
-    padding:20px 0px;
+    width:100%;
+    padding:20px 0px 0px;
     color:#fff;
-    background: #060714;
-    border:2px solid black
+    background: #000;
 }
-
-.test{
-    width: 100%; 
-    height: 100%;
-    border:2px solid red;
+#footer .col-sm-5 p{
+    font-size:15px;
 }
-
-#video_wrap{
-    position: fixed;
-    z-index: -99;
-    width: 100%; 
-    height: 100%;
+#footer .col-sm-5 p b{
+    font-size:17px;
+}
+#footer .col-sm-5 img{
+    width:30px;
+    padding:0px 5px;
 }
