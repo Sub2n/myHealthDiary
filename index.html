@@ -409,17 +409,15 @@
     <!-- Subin JavaScript -->
     <script type="text/javascript">
       date_storageKey = 'date';
-      storage_key = '';
       workout_storageKey = 'workouts';  // 모든 운동 list를 localStorage에 저장하는 key
       workouts = {};                    // 모든 운동 list
       date = [];
 
-      function load() {
-        storage_key = new Date().toISOString().slice(2, 10);
-        if (localStorage.getItem(date_storageKey) != null) {
+      function load(){
+        if(localStorage.getItem(date_storageKey) != null){
+          //date 배열이 등록되어있으면
           date = JSON.parse(localStorage.getItem(date_storageKey));
-        }
-
+        } 
       }
 
       function setWorkouts() {
@@ -566,10 +564,10 @@
           //없으니까 내가 만들고 저장할 정보를 담는다.
           workout_names.push(workout['name']);
           date_info = {
-            'food': {},
-            'workout': [],
-            'diary': {}
-          };
+                        'food': [],
+                        'workout': [],
+                        'diary': {}
+                      };
           date_info['workout'] = workout_names;
 
         } else { //있으면 아까 불러왔던 date_info에 내가 저장할 정보를 담는다.
@@ -630,10 +628,10 @@
           //없으니까 내가 만들고 저장할 정보를 담는다.
           workout_names.push(myname);
           date_info = {
-            'food': {},
-            'workout': [],
-            'diary': {}
-          };
+                        'food': [],
+                        'workout': [],
+                        'diary': {}
+                      };
           date_info['workout'] = workout_names;
 
         } else { //있으면 아까 불러왔던 date_info에 내가 저장할 정보를 담는다.

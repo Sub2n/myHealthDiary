@@ -3,6 +3,15 @@ body{
     font-size:15px;
 }
 .mian_title{font-size:60px;}
+
+
+.carousel-inner{
+    border:2px solid red
+}
+.carousel-item{
+    height:650px;
+    background: #fff;
+}
 div{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -11,9 +20,38 @@ div{
 
 .margin_top_10{margin-top:10px;}
 
-#diary_content_wrap{
-    padding-top:50px;
+
+
+#diary_wrap{
+    position: relative;
+    width:100%;
+    height:500px;
+    border:2px solid red;
 }
+
+
+.prev-icon{
+    float: left;
+    width:10%;
+    border:2px solid green
+}
+#diary_content_wrap{
+    float: left;
+    width:80%;
+    padding-top:50px;
+    border:2px solid black;
+}
+.next-icon{
+    float: left;
+    width:10%;
+}
+.prev-icon img, .next-icon img{
+    position: absolute;
+    top:40%;
+    border:2px solid pink
+}
+.next-icon img{right:0}
+
 
 #diary_input{
     width:500px;
@@ -80,15 +118,12 @@ div{
     border:1px solid #31aefd;
 }
 
-
-
 .modal-dialog{
     margin:5rem auto;
 }
 
 #diary_history_wrap{
     position: relative;
-    margin-top:100px;
     padding:50px 0px;
     background: #f1f1f1;
 }
@@ -104,5 +139,23 @@ div{
 .date_btn:last-child{
     margin-right:0;
 }
+#diary_history_wrap::after{
+    clear: both;
+    display: block;
+    content: "";
+}
 
 
+#workout_input.input-group.mb-3 {
+    height: 150px;
+}
+
+
+
+#footer{
+    clear: both;
+    padding:20px 0px;
+    color:#fff;
+    background: #060714;
+    border:2px solid black
+}
