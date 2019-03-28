@@ -10,14 +10,25 @@
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet"><!-- webfont -->
     <link rel="stylesheet" href="diary.css"><!-- 외부 스타일 불러오는 방법 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-
 </head>
 <body>
+<!--
+    <div class="test">
+        <div id="video_wrap">
+
+                <iframe frameborder="0" height="100%" width="100%" src="https://www.youtube.com/embed/xpzMr3nSOIE?mute=1&loop=1&autoplay=1&rel=0&controls=0&showinfo=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                
+        </div>
+    </div>
+
+-->
+
+                
+      
     <div id="nav">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2">logo</div>
+                <div class="col-sm-2">HealthDiary</div>
                 <div class="col-sm-10">글자</div>
             </div>
         </div>
@@ -27,7 +38,7 @@
             <img src="img/prev-icon.png">
         </div>
 
-        <div id="diary_content_wrap"><!-- diary input wrap-->
+        <div id="diary_content_wrap" data-date=""><!-- diary input wrap-->
             <h2 class="main_title text-center">내 건강 일기</h2>
             <div id="diary_input">
                 <form class="form" action="#">
@@ -83,10 +94,10 @@
             </div>
         </div><!-- //diary input wrap-->
 
-
         <div class="next-icon">
             <img src="img/next-icon.png">
         </div>
+
     </div>    
 
 
@@ -101,16 +112,17 @@
     <div id="footer" class="container-fluid">
         <div class="container">
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <h2>HealthDiary</h2>
                 </div>
-                <div class="col-sm-2">하단</div>
+
                 <div class="col-sm-8">git url</div>
             </div>
         </div>
     </div>
 
 
+  
     <script type="text/javascript">
         
         date_key = 'date';
@@ -122,6 +134,8 @@
             if(localStorage.getItem(date_key) != null){
                 date = JSON.parse(localStorage.getItem(date_key));
             }
+            var key = new Date().toISOString().slice(2, 10);
+            $('#diary_content_wrap').attr('data-date', key);
 
             loadFood();
             loadWorkout();
@@ -221,7 +235,7 @@
             var text = $(btn).attr("data-date");
             // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
             var data = JSON.parse(localStorage.getItem(text));
-
+            $('#diary_content_wrap').attr('data-date', text);
             
             // 만약 해당 날짜의 감정이 good 이면 icon 은 fa-grin 이런식으로...
             var icon;
@@ -240,6 +254,7 @@
 
             // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
             $("#emotion").html('<i class="far ' + icon + '"></i>');
+            
     
         }
 
@@ -255,19 +270,17 @@
             // 오늘 날짜를 저장한다.
             var today = new Date().toISOString().slice(2, 10);
             var isExist = false;  
-
             for(var i in date){
                 if(date.indexOf(today)>=0) {
                     var date_info = JSON.parse(localStorage.getItem(today));
                     isExist = true;
-                    //console.log('이미있다구..');
                 }
             }
 
             if(isExist == false) {
                 //없으니까 내가 만들고 저장할 정보를 담는다.
                 var date_info = {
-                                'food': {},
+                                'food': [],
                                 'workout': [],
                                 'diary': {'emotion':emotion, 'content':text}
                         };
@@ -278,7 +291,6 @@
                         "content": text,
                     }
             }
-
 
 
             // 로컬스토리지에 저장한다.
@@ -293,16 +305,6 @@
             // input 속성을 readonly로 설정하는 코드
             $('#writeDiary').prop("readonly", true);
 
-            /*
-                만약 readonly input 내용을 바꾸고 싶다면
-
-                $('#writeDiary').prop("readonly", false);
-                $('#writeDiary').val(바꾸고 싶은 값);
-                $('#writeDiary').prop("readonly", true);
-
-                > readonly인 상태에서 값이 바뀌고 다시 readonly된다.
-
-            */
             loadDiary();
         }
 
@@ -316,7 +318,7 @@
             // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
             var date_info = JSON.parse(localStorage.getItem(key));
 
-            var name_list = name_list = date_info['workout'];
+            var name_list = date_info['workout'];
 
             var workout_list = "";
 
@@ -348,8 +350,133 @@
 
 
         }
+        
+        function setPrevDiary(){
+            var key = $('#diary_content_wrap').attr('data-date');
+            var prev_key;
+            for(var i in date){
+                if(date[i] == key){
+                    prev_key = date[i-1];
+                }
+            }
+            var date_info = JSON.parse(localStorage.getItem(prev_key));
+
+            if(date_info == null){
+                alert('이전 날 일기가 없습니다.');
+                return;
+            }
+
+            // food 
+            var food_info = date_info['food'];
+            var food_list = "";
+             for(var i in food_info){
+                var food = food_info[i]; //object food {name: , type: , calorie: }
+                food_list += food['name'] + " "+ food['type'] + " " + food['calorie'] + "\n";
+             }
+             $('#food_record').prop('readonly', true);
+             $('#food_record').text(food_list);
+
+             //workout
+             var name_list = date_info['workout'];
+
+            var workout_list = "";
+
+            for(var i in name_list){
+                workout_list += name_list[i]+"\n";
+            }
+
+            $('#workout_record').prop('readonly', true);
+            $('#workout_record').text(workout_list);
+
+            //diary
+            var icon;
+            if (date_info["diary"]["emotion"] == "good") {
+                icon = "fa-grin";
+            } else if (date_info["diary"]["emotion"] == "normal") {
+                icon = "fa-flushed";
+            } else if (date_info["diary"]["emotion"] == "bad") {
+                icon = "fa-angry";
+            }
+
+            // 모달에 있던 내용을 한번 비워주고
+            $("#writeDiary").val("");
+            // 해당 내용으로 채운다.
+            $("#writeDiary").val(date_info["diary"]["content"]);
+
+            // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
+            $("#emotion").html('<i class="far ' + icon + '"></i>');
+
+
+            //data-date 어제 날짜로 update
+            $('#diary_content_wrap').attr('data-date', prev_key);
+
+        }
+
+        function setNextDiary(){
+            var key = $('#diary_content_wrap').attr('data-date');
+            var next_key;
+            for(var i=0; i<date.length; i++){
+                if(date[i] == key){
+                    next_key = date[i+1];
+                    console.log(next_key);
+                }
+            }
+            
+            var date_info = JSON.parse(localStorage.getItem(next_key));
+
+            if(date_info == null){
+                alert('다음 날 일기가 없습니다.');
+                return;
+            }
+
+            // food 
+            var food_info = date_info['food'];
+            var food_list = "";
+             for(var i in food_info){
+                var food = food_info[i]; //object food {name: , type: , calorie: }
+                food_list += food['name'] + " "+ food['type'] + " " + food['calorie'] + "\n";
+             }
+             $('#food_record').prop('readonly', true);
+             $('#food_record').text(food_list);
+
+             //workout
+             var name_list = date_info['workout'];
+
+            var workout_list = "";
+
+            for(var i in name_list){
+                workout_list += name_list[i]+"\n";
+            }
+
+            $('#workout_record').prop('readonly', true);
+            $('#workout_record').text(workout_list);
+
+            //diary
+            var icon;
+            if (date_info["diary"]["emotion"] == "good") {
+                icon = "fa-grin";
+            } else if (date_info["diary"]["emotion"] == "normal") {
+                icon = "fa-flushed";
+            } else if (date_info["diary"]["emotion"] == "bad") {
+                icon = "fa-angry";
+            }
+
+            // 모달에 있던 내용을 한번 비워주고
+            $("#writeDiary").val("");
+            // 해당 내용으로 채운다.
+            $("#writeDiary").val(date_info["diary"]["content"]);
+
+            // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
+            $("#emotion").html('<i class="far ' + icon + '"></i>');
+
+
+            //data-date 어제 날짜로 update
+            $('#diary_content_wrap').attr('data-date', next_key);
+
+        }
 
         $(document).ready(function(){
+
             // 시작시 로컬스토리지 로드하는 함수 호출
             load();
 
@@ -380,14 +507,17 @@
                 saveDiary();
             }); // click event end 
             
+            $('.prev-icon img').click(function(){
+            
+                setPrevDiary();
+            });
+            $('.next-icon img').click(function(){
+           
+                setNextDiary();
+            });
         });
 
-        $('.prev-icon img').click(function(){
-            alert("이전 일기 불러오기");
-        });
-        $('.next-icon img').click(function(){
-            alert("다음 일기 불러오기");
-        });
+       
         
     </script>
 

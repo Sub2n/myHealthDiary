@@ -1,13 +1,12 @@
 body{
     font-family: 'Nanum Gothic', sans-serif;
     font-size:15px;
+
 }
-.mian_title{font-size:60px;}
+.mian_title{font-size:60px; color:#fff;}
 
 
-.carousel-inner{
-    border:2px solid red
-}
+
 .carousel-item{
     height:650px;
     background: #fff;
@@ -20,44 +19,40 @@ div{
 
 .margin_top_10{margin-top:10px;}
 
-
+#nav{
+    width:100%;
+    padding:10px 0px;
+    background: #000;
+    color:#fff;
+}
 
 #diary_wrap{
     position: relative;
     width:100%;
-    height:500px;
-    border:2px solid red;
+    padding:50px 0px;
 }
 
 
-.prev-icon{
-    float: left;
-    width:10%;
-    border:2px solid green
-}
-#diary_content_wrap{
-    float: left;
-    width:80%;
-    padding-top:50px;
-    border:2px solid black;
-}
-.next-icon{
-    float: left;
-    width:10%;
-}
-.prev-icon img, .next-icon img{
+
+.prev-icon img{
     position: absolute;
     top:40%;
-    border:2px solid pink
+    left:20px;
 }
-.next-icon img{right:0}
+.next-icon img{
+    position: absolute;
+    top:40%;
+    right:20px;
+}
+
 
 
 #diary_input{
     width:500px;
     margin:30px auto 0px;
     padding:30px 20px;
-    border:3px solid #31aefd;
+    background: #fff;
+    border:1px solid #f1f1f1;
 }
 
 #diary_input label{
@@ -161,4 +156,17 @@ div{
     color:#fff;
     background: #060714;
     border:2px solid black
+}
+
+.test{
+    width: 100%; 
+    height: 100%;
+    border:2px solid red;
+}
+
+#video_wrap{
+    position: fixed;
+    z-index: -99;
+    width: 100%; 
+    height: 100%;
 }

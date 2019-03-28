@@ -273,7 +273,7 @@
         var selected_food = foods[key]; //사용자가 선택한 음식
         var food_info = []; //localStorage에 사용자가 저장한 food 배열을 담을거임
         recent_food = {}; //사용자가 선택한 음식 정보를 담을 객체
-
+        
         var isExist = false; //일단 today가 date에 없다는 가정 하에 false로 해놓는데, 있으면 true로 바꿔준다.
         for (var i in date) {
           if (date.indexOf(today) >= 0) {
@@ -403,6 +403,7 @@
 
     <!-- Subin JavaScript -->
     <script type="text/javascript">
+ 
       date_storageKey = 'date';
       workout_storageKey = 'workouts';  // 모든 운동 list를 localStorage에 저장하는 key
       workouts = {};                    // 모든 운동 list
@@ -545,7 +546,7 @@
         var date_info = {};
         var workout = workouts[id];
         var workout_names = [];
-
+  
         var isExist = false; //일단 없다는 가정 하에 false로 해놓는데, 있으면 true로 바꿔준다.
         for (var i in date) {
           if (date.indexOf(today) >= 0) {
