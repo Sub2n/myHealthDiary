@@ -127,17 +127,29 @@
             //input 값 초기화, readonly
             $('#workout_record').text('');
             var key = new Date().toISOString().slice(2, 10);
-            
-            var date_info = date_info = JSON.parse(localStorage.getItem(key));
-            var name_list = name_list = date_info['workout'];
+            var date_info = {};
+            var name_list = [];
+            if(date.indexOf(key) == -1){
+                // date에 오늘 날짜가 없다면
+                date_info = {
+                    'food' : {},
+                    'workout' : [],
+                    'diary' : {'emotion': "", 'content': ""}
+                }
+                name_list = date_info['workout'];
 
+            } else{
+                // 있으면
+                date_info = JSON.parse(localStorage.getItem(key));
+                name_list = date_info['workout'];
+            }
+                
             var workout_list = "";
 
             for(var i in name_list){
                 workout_list += name_list[i]+"\n";
             }
 
-            console.log(workout_list);
             $('#workout_record').prop('readonly', true);
             $('#workout_record').text(workout_list);
 
@@ -152,7 +164,6 @@
             // 날짜를 하단에 뿌려줌
             // 그 자료의 날짜를 한바퀴 돈다.
             for (var i in date) {
-                var icon;
                 var key = date[i];
                 var date_info = JSON.parse(localStorage.getItem(key));
                 $("#section").append(
