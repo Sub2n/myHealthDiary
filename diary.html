@@ -191,17 +191,17 @@
 
             
             // 만약 해당 날짜의 감정이 good 이면 icon 은 fa-grin 이런식으로...
-            var icon
+            var icon;
             if (data["diary"]["emotion"] == "good") {
-            icon = "fa-grin";
+                icon = "fa-grin";
             } else if (data["diary"]["emotion"] == "normal") {
-            icon = "fa-flushed";
+                icon = "fa-flushed";
             } else if (data["diary"]["emotion"] == "bad") {
-            icon = "fa-angly";
+                icon = "fa-angry";
             }
 
             // 모달에 있던 내용을 한번 비워주고
-            $("#writeDiary").val("")
+            $("#writeDiary").val("");
             // 해당 내용으로 채운다.
             $("#writeDiary").val(data["diary"]["content"]);
 
