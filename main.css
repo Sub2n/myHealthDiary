@@ -1,3 +1,8 @@
+
+.logo{
+    font-family: 'Baloo Chettan', cursive;
+    color:#fff;
+}
 div.main_contain {
     padding:70px 0px;
     text-align: center;
@@ -6,7 +11,11 @@ div.main_contain {
 h2.main_title {
     margin: 2%;
     color:#fff;
+    font-size:120px;
+    opacity: 0.5;;
     text-shadow: 4px 2px 2px #333;
+    font-weight: 600;
+    font-family: 'Baloo Chettan', cursive;
 }
 
 button#diary_button {
@@ -45,7 +54,6 @@ button#food_title {
     line-height: 80px;
     padding: 0;
     border-radius: 0;
-    font-size:30px;   
 }
 
 button#myWorkoutButton {
