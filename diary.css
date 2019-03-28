@@ -150,6 +150,9 @@ div{
     height: 150px;
 }
 
+#food_input.input-group.mb-3 {
+    height: 150px;
+}
 
 
 #footer{
