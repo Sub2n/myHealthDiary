@@ -38,15 +38,17 @@
                         19-03-27 15:52
                         Subin 시작
                     -->
+         
                     <div class="health_diary">
-                        <div class="input-group mb-3">
+                        <div id="workout_input" class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">운동<img src="img/startup.png"></span>
                             </div>
-                            <input id="workout_record" type="text" class="form-control" placeholder="운동리스트" aria-describedby="basic-addon1">
-                        </div>
-                              
+                            <textarea class="form-control" id="workout_record" placeholder="운동 리스트" required></textarea>
+    
+                        </div>  
                     </div>  
+
                     <div class="write_diary_wrap">
                         <div class="form-check-wrap">
                             <div class="form-check">
@@ -122,7 +124,23 @@
         // 19-03-27 16:50
         // Subin
         function loadWorkout(){
+            //input 값 초기화, readonly
+            $('#workout_record').text('');
+            var key = new Date().toISOString().slice(2, 10);
             
+            var date_info = date_info = JSON.parse(localStorage.getItem(key));
+            var name_list = name_list = date_info['workout'];
+
+            var workout_list = "";
+
+            for(var i in name_list){
+                workout_list += name_list[i]+"\n";
+            }
+
+            console.log(workout_list);
+            $('#workout_record').prop('readonly', true);
+            $('#workout_record').text(workout_list);
+
         }
 
         // section을 비워주고 새로 date를 받아와 section에 load
@@ -148,40 +166,36 @@
                     "</div>"
                 );
             }
-            setDiaryRecords();
         }
-
+           
         // 하단의 날짜 기록들( .date_btn) 클릭시 해당 내용을 일기장에 반영
-        function setDiaryRecords(){
-            // date-btn 누르면 showDiary에 내용 반영!
-            // "date-btn"이라는 클래스를 가진 버튼을 누르면
-            $(document).on("click", ".date_btn", function(e) {
-                // 해당 버튼의 날짜 값을 가져와서
+        function setDiaryRecords(btn){
+            // 해당 버튼의 날짜 값을 가져와서
 
-                var text = $(this).attr("data-date");
-                // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
-                var data = JSON.parse(localStorage.getItem(text));
+            var text = $(btn).attr("data-date");
+            // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
+            var data = JSON.parse(localStorage.getItem(text));
 
-                
-                // 만약 해당 날짜의 감정이 good 이면 icon 은 fa-grin 이런식으로...
-                var icon
-                if (data["diary"]["emotion"] == "good") {
+            
+            // 만약 해당 날짜의 감정이 good 이면 icon 은 fa-grin 이런식으로...
+            var icon;
+            if (data["diary"]["emotion"] == "good") {
                 icon = "fa-grin";
-                } else if (data["diary"]["emotion"] == "normal") {
-                icon = "fa-flushed";
-                } else if (data["diary"]["emotion"] == "bad") {
+            } else if (data["diary"]["emotion"] == "normal") {
+                icon = "fa-flushed";              
+            } else if (data["diary"]["emotion"] == "bad") {
                 icon = "fa-angly";
-                }
+            }
 
-                // 모달에 있던 내용을 한번 비워주고
-                $("#writeDiary").val("")
-                // 해당 내용으로 채운다.
-                $("#writeDiary").val(data["diary"]["content"]);
+            // 모달에 있던 내용을 한번 비워주고
+            $("#writeDiary").val("")
+            // 해당 내용으로 채운다.
+            $("#writeDiary").val(data["diary"]["content"]);
 
-                // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
-                $("#emotion").html('<i class="far ' + icon + '"></i>');
-       
-            });
+            // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
+            $("#emotion").html('<i class="far ' + icon + '"></i>');
+            
+    
         }
 
         // SaveButton 눌렸을 때
@@ -247,9 +261,41 @@
             loadDiary();
         }
 
+        // date_btn 클릭시 해당 날짜의 운동기록을 세팅한다.
+        // subin 19-03-27 19:04 completed
+        function setWorkoutRecords(btn){
+
+            // 해당 버튼의 날짜 값을 가져와서
+            var key = $(btn).attr("data-date");
+
+            // 로컬스토리지에서 해당하는 날짜의 객체(정보)를 가져와서
+            var date_info = JSON.parse(localStorage.getItem(key));
+
+            var name_list = name_list = date_info['workout'];
+
+            var workout_list = "";
+
+            for(var i in name_list){
+                workout_list += name_list[i]+"\n";
+            }
+
+            console.log(workout_list);
+            $('#workout_record').prop('readonly', true);
+            $('#workout_record').text(workout_list);
+
+        }
+
         $(document).ready(function(){
             // 시작시 로컬스토리지 로드하는 함수 호출
             load();
+
+             // date-btn 누르면 showDiary에 내용 반영!
+            // "date-btn"이라는 클래스를 가진 버튼을 누르면
+            $(document).on("click", ".date_btn", function(e) {
+                var btn = this;
+                setWorkoutRecords(btn);
+                setDiaryRecords(btn)
+            });
 
             // 폼태그의 기본 submit 이벤트를 막는다.
             $("form").submit(function(e) {
@@ -272,12 +318,40 @@
         });
 
         $('.prev-icon img').click(function(){
+            
             alert("이전 일기 불러오기");
         });
         $('.next-icon img').click(function(){
             alert("다음 일기 불러오기");
         });
-        
+        /*
+        // 오늘 날짜를 저장한다.
+        var today = new Date().toISOString().slice(2, 10);
+            var isExist = false;  
+
+            for(var i in date){
+                if(date.indexOf(today)>=0) {
+                    var date_info = JSON.parse(localStorage.getItem(today));
+                    isExist = true;
+                    //console.log('이미있다구..');
+                }
+            }
+
+            if(isExist == false) {
+                //없으니까 내가 만들고 저장할 정보를 담는다.
+                var date_info = {
+                                'food': {},
+                                'workout': [],
+                                'diary': {'emotion':emotion, 'content':text}
+                        };
+                
+            } else { //있으면 아까 불러왔던 date_info에 내가 저장할 정보를 담는다.
+                date_info['diary'] = {
+                        "emotion": emotion,
+                        "content": text,
+                    }
+            }
+            */
     </script>
 
 
