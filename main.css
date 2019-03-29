@@ -69,6 +69,22 @@ button#myWorkoutButton {
     border-radius: 0;
 }
 
+button#myWorkoutButton:hover{
+
+    background: rgba(171,171,171,0.7);
+    background: -moz-linear-gradient(left, rgba(171,171,171,1) 0%, rgba(166,166,166,0.82) 34%, rgba(158,158,158,0.66) 66%, rgba(97,97,97,0.48) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(171,171,171,1)), color-stop(34%, rgba(166,166,166,0.82)), color-stop(66%, rgba(158,158,158,0.66)), color-stop(100%, rgba(97,97,97,0.48)));
+    background: -webkit-linear-gradient(left, rgba(171,171,171,1) 0%, rgba(166,166,166,0.82) 34%, rgba(158,158,158,0.66) 66%, rgba(97,97,97,0.48) 100%);
+    background: -o-linear-gradient(left, rgba(171,171,171,1) 0%, rgba(166,166,166,0.82) 34%, rgba(158,158,158,0.66) 66%, rgba(97,97,97,0.48) 100%);
+    background: -ms-linear-gradient(left, rgba(171,171,171,1) 0%, rgba(166,166,166,0.82) 34%, rgba(158,158,158,0.66) 66%, rgba(97,97,97,0.48) 100%);
+    background: linear-gradient(to right, rgba(171,171,171,1) 0%, rgba(166,166,166,0.82) 34%, rgba(158,158,158,0.66) 66%, rgba(97,97,97,0.48) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ababab', endColorstr='#616161', GradientType=1 );
+    border: 2px solid #000;
+    color: #fff;
+    
+   
+}
+
 button#myFoodButton {
     width: 525px;
     background: #fff;
@@ -79,6 +95,22 @@ button#myFoodButton {
     padding: 0;
     margin: 15px;
     border-radius: 0;
+}
+
+button#myFoodButton:hover{
+
+    background: rgba(97,97,97,0.48);
+    background: -moz-linear-gradient(left, rgba(97,97,97,0.48) 0%, rgba(158,158,158,0.66) 34%, rgba(166,166,166,0.82) 66%, rgba(171,171,171,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(97,97,97,0.48)), color-stop(34%, rgba(158,158,158,0.66)), color-stop(66%, rgba(166,166,166,0.82)), color-stop(100%, rgba(171,171,171,1)));
+    background: -webkit-linear-gradient(left, rgba(97,97,97,0.48) 0%, rgba(158,158,158,0.66) 34%, rgba(166,166,166,0.82) 66%, rgba(171,171,171,1) 100%);
+    background: -o-linear-gradient(left, rgba(97,97,97,0.48) 0%, rgba(158,158,158,0.66) 34%, rgba(166,166,166,0.82) 66%, rgba(171,171,171,1) 100%);
+    background: -ms-linear-gradient(left, rgba(97,97,97,0.48) 0%, rgba(158,158,158,0.66) 34%, rgba(166,166,166,0.82) 66%, rgba(171,171,171,1) 100%);
+    background: linear-gradient(to right, rgba(97,97,97,0.48) 0%, rgba(158,158,158,0.66) 34%, rgba(166,166,166,0.82) 66%, rgba(171,171,171,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#616161', endColorstr='#ababab', GradientType=1 );
+    border: 2px solid #000;
+    color: #fff;
+
+   
 }
 
 
