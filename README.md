@@ -12,4 +12,9 @@ You can also save your own diet and workout record to your diary. All records wi
 Diary page. You can check all of saved diets and workout data here.
 Also can write diary in this page.
 
+* ## Contribution
+- Mida      : Diary Part, Layout Design
+- Subin     : Workout Part, Font and Background Plugin
+- Sunghyun  : Food Part
+
 Thank You :blush:
