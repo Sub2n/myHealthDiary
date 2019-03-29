@@ -36,7 +36,7 @@
             <div id="diary_input">
                 <form class="form" action="#">
                     <div class="date_info text-center">
-                        <h3 id="date">19 03 29</h3>
+                        <h3 id="date"></h3>
                     </div>
                     <div class="food_diary">
                         <div id="food_input" class="input-group mb-3">
@@ -262,6 +262,9 @@
 
             // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
             $("#emotion").html('<i class="far ' + icon + '"></i>');
+            console.log(key);
+            $('#date').text(key.replace("-", " ").replace("-", " "));
+            
         }
            
         // 하단의 날짜 기록들( .date_btn) 클릭시 해당 내용을 일기장에 반영
@@ -290,7 +293,10 @@
 
             // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
             $("#emotion").html('<i class="far ' + icon + '"></i>');
-            
+
+            console.log(text);
+            $('#date').text(text.replace("-", " ").replace("-", " "));
+           
     
         }
 
@@ -446,6 +452,9 @@
             //data-date 어제 날짜로 update
             $('#diary_content_wrap').attr('data-date', prev_key);
 
+            console.log(prev_key);
+            $('#date').text(prev_key.replace("-", " ").replace("-", " "));
+
         }
 
         function setNextDiary(){
@@ -508,6 +517,9 @@
 
             //data-date 어제 날짜로 update
             $('#diary_content_wrap').attr('data-date', next_key);
+
+            console.log(next_key);
+            $('#date').text(next_key.replace("-", " ").replace("-", " "));
 
         }
 

@@ -10,7 +10,7 @@ h2.diary_title{
     font-family: 'PT Serif', serif;
 }
 
-h3.date{
+h3#date{
     font-size:40px;
     font-weight: 500;
     font-family: 'Lora', serif;
