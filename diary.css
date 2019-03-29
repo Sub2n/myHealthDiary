@@ -7,10 +7,18 @@ body{
 h2.diary_title{
     font-size:80px;
     font-weight: 600;
-    font-family: 'Baloo Chettan', cursive;
+    font-family: 'PT Serif', serif;
 }
+
+h3.date{
+    font-size:40px;
+    font-weight: 500;
+    font-family: 'Lora', serif;
+    padding-bottom: 1rem;
+}
+
 .logo{
-    font-family: 'Baloo Chettan', cursive;
+    font-family: 'PT Serif', serif;
     color:#fff;
 }
 

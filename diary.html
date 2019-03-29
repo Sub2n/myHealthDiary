@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet"><!-- webfont -->
     <link rel="stylesheet" href="diary.css"><!-- 외부 스타일 불러오는 방법 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lora|PT+Serif:700" rel="stylesheet">
 
   
 </head>
@@ -19,7 +20,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <a href="index.html" class="logo">My Health Diary</a>
+                    <a href="index.html" class="logo">Save Your Day</a>
                 </div>
                 <div class="col-sm-6"></div>
             </div>
@@ -34,6 +35,9 @@
             <h2 class="diary_title text-center">My Health Diary</h2>
             <div id="diary_input">
                 <form class="form" action="#">
+                    <div class="date_info text-center">
+                        <h3 id="date">19 03 29</h3>
+                    </div>
                     <div class="food_diary">
                         <div id="food_input" class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -224,6 +228,40 @@
                     "</div>"
                 );
             }
+
+            //input 값 초기화, readonly
+            $('#writeDiary').text('');
+            var key = new Date().toISOString().slice(2, 10);
+            var date_info = {};
+            if(date.indexOf(key) == -1){
+                // date에 오늘 날짜가 없다면
+                date_info = {
+                    'food' : [],
+                    'workout' : [],
+                    'diary' : {'emotion': "", 'content': ""}
+                }
+       
+            } else{
+                // 있으면
+                date_info = JSON.parse(localStorage.getItem(key));
+            }
+                
+            var icon;
+            if (date_info["diary"]["emotion"] == "good") {
+                icon = "fa-grin";
+            } else if (date_info["diary"]["emotion"] == "normal") {
+                icon = "fa-flushed";
+            } else if (date_info["diary"]["emotion"] == "bad") {
+                icon = "fa-angry";
+            }
+
+            // 모달에 있던 내용을 한번 비워주고
+            $("#writeDiary").val("");
+            // 해당 내용으로 채운다.
+            $("#writeDiary").val(date_info["diary"]["content"]);
+
+            // 감정에 따라 클래스를 바꿔서 텍스트 뒤에 아이콘 추가.
+            $("#emotion").html('<i class="far ' + icon + '"></i>');
         }
            
         // 하단의 날짜 기록들( .date_btn) 클릭시 해당 내용을 일기장에 반영

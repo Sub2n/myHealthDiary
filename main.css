@@ -1,8 +1,9 @@
 
 .logo{
-    font-family: 'Baloo Chettan', cursive;
+    font-family: 'PT Serif', serif;
     color:#fff;
 }
+
 div.main_contain {
     padding:70px 0px;
     text-align: center;
@@ -15,7 +16,7 @@ h2.main_title {
     opacity: 0.5;;
     text-shadow: 4px 2px 2px #333;
     font-weight: 600;
-    font-family: 'Baloo Chettan', cursive;
+    font-family: 'PT Serif', serif;
 }
 
 button#diary_button {
