@@ -265,3 +265,9 @@ a.logo {
     color: black;
     border-radius: 0;
 }
+
+#particles {
+    position: fixed;
+    z-index: -1000;
+}
+

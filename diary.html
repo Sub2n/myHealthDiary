@@ -12,10 +12,13 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lora|PT+Serif:700" rel="stylesheet">
 
-  
+    <script src="jquery.particleground.js"></script>
+
+    <script src="jquery.ripples.js"></script>
+
+
 </head>
 <body>
-      
     <div id="nav">
         <div class="container">
             <div class="row">
@@ -523,8 +526,16 @@
 
         }
 
+   
+
         $(document).ready(function(){
 
+            $('body').ripples({
+                resolution: 512,
+                dropRadius: 20,
+                perturbance: 0.1,
+            });
+            $('body').ripples("play")
             // 시작시 로컬스토리지 로드하는 함수 호출
             load();
 
@@ -563,6 +574,13 @@
            
                 setNextDiary();
             });
+
+
+            // $('#particles').particleground({
+            //     dotColor: '#5cbdaa',
+            //     lineColor: '#5cbdaa'
+            // });
+            
         });
 
        
